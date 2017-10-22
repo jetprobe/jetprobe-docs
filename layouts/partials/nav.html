@@ -1,0 +1,18 @@
+{{ $currentNode := . }}
+
+{{ range .Site.Menus.main.ByWeight }}
+
+{{ $.Scratch.Set "currentMenuEntry" . }}
+<li>
+  {{ if .HasChildren }}
+    <ul>
+      {{ range .Children }}
+        {{ $.Scratch.Set "currentMenuEntry" . }}
+        {{ partial "nav_link" $currentNode }}
+      {{ end }}
+    </ul>
+  {{ else }}
+    {{ partial "nav_link" $currentNode }}
+  {{ end }}
+</li>
+{{ end }}
