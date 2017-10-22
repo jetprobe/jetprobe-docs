@@ -1,4 +1,4 @@
-baseurl = "http://jetprobe.com/"
+baseurl = "https://retailer-swaps-73735.netlify.com/"
 languageCode = "en-us"
 title = "JET PROBE"
 theme = "hugo-material-docs"
