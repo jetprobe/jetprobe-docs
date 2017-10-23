@@ -1,6 +1,6 @@
 baseurl = "https://www.jetprobe.com/"
 languageCode = "en-us"
-title = "JET PROBE"
+title = "Jet Probe"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
 canonifyurls = true
@@ -9,9 +9,9 @@ googleAnalytics = ""
 
 [params]
 	# General information
-	author = "Digitalcraftsman"
-	description = "A material design theme for documentations."
-	copyright = "Released under the MIT license"
+	author = "Shad Amez"
+	description = "JetProbe documentation"
+	copyright = "Shad Amez. Released under the Apache license"
 
 	# Repository
 	provider = "GitHub"
@@ -37,12 +37,6 @@ googleAnalytics = ""
     	text = "Ubuntu"
     	code = "Ubuntu Mono"
 
-
-[social]
-	twitter = ""
-	github  = "digitalcraftsman"
-	email   = "hello@email.com"
-
 [[menu.main]]
   name = "Guide to JetProbe"
 	url = "/docs/"
@@ -50,16 +44,17 @@ googleAnalytics = ""
 	identifier = "docsMenu"
 
 [[menu.main]]
-	name   = "Getting started"
-	url    = "/docs/getting-started/"
+	name   = "Introduction"
+	url    = "/docs/introduction/"
 	parent = "docsMenu"
 	weight = 10
 
 [[menu.main]]
-	name   = "Adding content"
-	url    = "/docs/adding-content/"
+	name   = "Getting started"
+	url    = "/docs/getting-started/"
 	parent = "docsMenu"
 	weight = 20
+
 
 [[menu.main]]
 	name   = "Roadmap"

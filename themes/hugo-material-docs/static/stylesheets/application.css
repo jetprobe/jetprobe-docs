@@ -3,6 +3,9 @@ html {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box
 }
+b,strong{
+  font-weight: 600;
+}
 @font-face {
     font-family: brandFont;
     src: url(../fonts/Bold/aleo-bold-webfont.woff);
@@ -897,7 +900,8 @@ h1 .article .headerlink {
 
 .article p>code {
   white-space: nowrap;
-  padding: 2px 4px
+  padding: 2px 4px;
+  background-color: #d7e2ef;
 }
 
 .article kbd {

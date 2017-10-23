@@ -4,24 +4,13 @@ title: Roadmap
 weight: 30
 ---
 
-Quo vadis? The port of the original [Material theme](https://github.com/squidfunk/mkdocs-material) has replicated nearly all of its features. A few are still missing but I've good news: the Hugo community is actively working on this issues. Maybe with the next release of Hugo we can abandon this list. Stay tuned.
+## Stream validation
 
-## Localization
+Currently JetProbe supports only validation of component properties. This feature would enable the developers to test the incoming/outgoing streaming stored in RabbitMQ and Kafka.
 
-Currently, it is possible to collect all strings in a single place for easy customization. However, this only enables you to define all strings in a single language. This approach is quite limiting in terms of localization support. Therefore, I decided to wait for a native integration. This way we can avoid a second setup of all strings in your website.
+## Spark Connector
 
-Keep an eye on [#1734](https://github.com/spf13/hugo/issues/1734).
+Spark connector would enable the user to validate the Spark Job configuration and the status at any point of time. It can validate the cluster resources being used by the job, the job status, the applicaton name and other job specific configurations.
 
-## Search
-
-Beside third-party services, some hacky workarounds and Grunt-/Gulp-based scripts that only require unnecessary dependencies, future versions of Hugo will support the generation of a content index as a core feature.
-
-This approach plays well with this theme since MkDocs does the same.
-
-Keep an eye on [#1853](https://github.com/spf13/hugo/pull/1853).
-
-## Contributing
-
-Did you found an bug or you would like to suggest a new feature? I'm open for feedback. Please open a new [issue](https://github.com/digitalcraftsman/hugo-material-docs/issues) and let me know.
-
-You're also welcome to contribute with [pull requests](https://github.com/digitalcraftsman/hugo-material-docs/pulls).
+## ES & Solr Connector
+Connectors for Solr and Elasticsearch would enable the developers to validate the schema of the index, index properties, documents in the index and also the cluster specific properties of the Search Engine.
