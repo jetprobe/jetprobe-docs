@@ -1,5 +1,4 @@
 ---
-date: 2017-22-09T00:11:02+01:00
 title: Getting started
 weight: 10
 ---
