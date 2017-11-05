@@ -3,11 +3,17 @@ body.homePage {
 }
 
 .main {
-    min-height: 80vh;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+}
+.container.banner-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 70vh;
 }
+
 a#getStarted-button, a#download-button {
     padding-left: 3.5rem;
     padding-right: 3.5rem;

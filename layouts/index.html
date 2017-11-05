@@ -11,11 +11,12 @@
 </ul>
 
   <div class="section no-pad-bot" id="index-banner">
-    <div class="container main">
+    <div class="container banner-main">
       <br><br>
       <h1 class="center brand-logo">{{ .Site.Title }}</h1>
       <div class="row center">
-        <h5 class="col s12 light">Fastest way to test big data pipelines.</h5>
+        <h5 class="col s12 light">Fastest way to validate data pipelines.</h5>
+        <h6>Currently in early stage development. Expect surprises.</h6>
       </div>
       <div class="row center">
         <a href="/docs/getting-started/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Get Started</a>
@@ -37,8 +38,8 @@
             <h2 class="center"><i class="material-icons">flash_on</i></h2>
             <h5 class="center">Speeds up development</h5>
 
-            <p class="white-text light ">We did most of the heavy lifting for you to run the validation tests on the big data pipeline, without
-              caring about the third-party libraries required for interfacing with the big data components.</p>
+            <p class="white-text light ">We did most of the heavy lifting for you to run the validation tests on the data pipeline, without
+              the need to care about the third-party libraries required for interfacing with the infrastructure components.</p>
           </div>
         </div>
 
@@ -69,14 +70,7 @@
     <br><br>
   </div>
 </div>
-  <footer class="page-footer white black-text">
-
-    <div class="footer-copyright white">
-      <div class="container">
-      <span class="grey-text text-darken-2">Copyright &copy <a class="light-blue-text" href="">2017 Shad Amez</a></span>
-      </div>
-    </div>
-  </footer>
-
+{{ partial "footer" . }}
+{{ partial "footer_js" . }}
   </body>
 </html>
