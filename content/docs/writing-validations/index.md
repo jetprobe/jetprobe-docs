@@ -18,7 +18,7 @@ resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-      "com.jetprobe" %% "jetprobe-core" % "0.1.0-SNAPSHOT",
+    "com.jetprobe" %% "jetprobe-core" % "0.1.0-SNAPSHOT",
     "com.jetprobe" %% "jetprobe-rabbitmq" % "0.1.0-SNAPSHOT",
     "com.jetprobe" %% "jetprobe-mongo" % "0.1.0-SNAPSHOT"
   )
@@ -26,7 +26,7 @@ libraryDependencies ++= Seq(
 Once you have added the required libraries, start by creating a Scala class to define the scenario that needs to be validated. In this case, we are trying to validate the creation of exchange, once a http request is executed.
 
 ```scala
-class Sample Scenario extends TestScenario {
+class SampleScenario extends TestScenario {
 
 // declare the RabbitMQ sink, that would be our target for validation
  val rabbit = RabbitMQSink("${rabbit.host}")
