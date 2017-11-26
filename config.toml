@@ -17,8 +17,8 @@ googleAnalytics = "UA-83272953-2"
 	provider = "GitHub"
 
 	version = "1.0.0"
-	logo = "images/logo.png"
-	favicon = "images/favicon.png"
+	logo = "images/fav.ico"
+	favicon = "images/fav.ico"
 
 	permalink = "#"
 
@@ -56,23 +56,29 @@ googleAnalytics = "UA-83272953-2"
 	weight = 20
 
 [[menu.main]]
+	name   = "Actions"
+	url    = "/docs/actions/"
+	parent = "docsMenu"
+	weight = 30
+
+[[menu.main]]
 	name   = "Writing validations"
 	url    = "/docs/writing-validations/"
 	parent = "docsMenu"
-	weight = 30
+	weight = 40
 
 
 [[menu.main]]
 	name   = "Roadmap"
 	url    = "/docs/roadmap/"
 	parent = "docsMenu"
-	weight = 40
+	weight = 50
 
 [[menu.main]]
 	name   = "License"
 	url    = "/docs/license/"
 	parent = "docsMenu"
-	weight = 50
+	weight = 60
 
 
 [blackfriday]

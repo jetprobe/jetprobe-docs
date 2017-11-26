@@ -1,8 +1,20 @@
 {{ partial "head" . }}
 
 <div class="navbar-fixed">
-  <nav class="nav-white" role="navigation">
-    {{ partial "header" . }}
+  <nav class="nav-white dark-bg" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo white-text">
+        Jet Probe
+        <!--img src="/images/brand.png" alt="Brand" style="height : 35px; margin-top: 15px;" /-->
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="white-text" href="/docs/introduction"><b>Docs</b></a></li>
+        <li><a class="white-text" href="https://github.com/jetprobe/jetprobe"><b>Github</b></a></li>
+      </ul>
+
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
+    </div>
   </nav>
 </div>
 <ul id="nav-mobile" class="side-nav">
@@ -10,13 +22,13 @@
   <li><a class="grey-text text-darken-2" href="https://github.com/jetprobe/jetprobe">Github</a></li>
 </ul>
 
-  <div class="section no-pad-bot" id="index-banner">
+  <div class="section no-pad-bot bg-img" id="index-banner">
     <div class="container banner-main">
       <br><br>
-      <h1 class="center brand-logo">{{ .Site.Title }}</h1>
+      <h1 class="center brand-logo white-text">{{ .Site.Title }}</h1>
       <div class="row center">
-        <h5 class="col s12 light">Validations for data pipelines made easy. Powered by Scala.</h5>
-        <h6>Currently in early stage development. Expect surprises.</h6>
+        <h5 class="col s12 light grey-text text-lighten-4">Validations for data pipelines simplified.</h5>
+        <h6 class="grey-text lighten-4">Currently in early stage development. Expect surprises.</h6>
       </div>
       <div class="row center">
         <a href="/docs/getting-started/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Get Started</a>
@@ -27,49 +39,97 @@
     </div>
   </div>
 
-<div class="section light-blue lighten-1">
-  <div class="container">
-    <div class="section">
+  <div class="section grey lighten-4">
+    <div class="container">
+      <div class="section">
 
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col m12 l4">
-          <div class="icon-block white-text">
-            <h2 class="center"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
+        <!--   Icon Section   -->
+        <div class="row">
+          <div class="col s12 m8 l8 offset-m2 offset-l2">
+            <div class="icon-block black-text">
+              <h2 class="center"><i class="material-icons">group</i></h2>
+              <h5 class="center">DEVELOPERS FIRST</h5>
 
-            <p class="white-text light ">We did most of the heavy lifting for you to run the validation tests on the data pipeline, without
-              the need to care about the third-party libraries required for interfacing with the infrastructure components.</p>
+              <p class="grey-text text-darken-2 center">Jet Probe provides
+                easy to use and understand test DSL to express scenarios and eliminates the need to connect, fetch or insert to different
+              infrastructure components like files, databases, messaging queues or other HTTP services.</p>
+            </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col m12 l12">
+              <pre><code class="scala">
+             //Defing the insert post request
+             val insertPost = Http("insertionPost")
+                            .post("https://${api.server.host}/api/users")
+                            .body(
+                              fromFile("""/home/sa/data/rest-payload.json""")
+                              )
 
-        <div class="col m12 l4">
-          <div class="icon-block white-text">
-            <h2 class="center"><i class="material-icons">group</i></h2>
-            <h5 class="center">Developer Focused</h5>
+            //Define the mongo db connection detail
+            val mongo = MongoSink("mongodb://${mongo.host}/")
 
-            <p class="light">By leveraging the principles of Functional Programming, we were able to create a framework that
-              allows the developers to write expressive code for validating different properties and data residing in the
-            infrastructure component.</p>
-          </div>
-        </div>
-
-        <div class="col m12 l4">
-          <div class="icon-block white-text">
-            <h2 class="center"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to
-               help new users get started. We are also always open to feedback and can answer
-               any questions a user may have about JetProbe.</p>
+             //Define the scenario, expressed as series of steps
+             scenario("Fetch Posts Scenario")
+                 .http(insertPost)
+                 .validate[HttpRequestBuilder](insertPost) {
+                   given(jsonQuery = "$.userId")(
+                   checkExtractedValue[Boolean](true, x => x.startsWith("100"))
+                 )
+               }
+                .pause(2.seconds)
+                .validate[MongoSink](mongo) {
+                 given(mongo(database = "user.posts"))(
+                  checkDBStats[Boolean](true, _.collections == 10)
+                )
+               }
+             }
+              </code></pre>
           </div>
         </div>
       </div>
-
     </div>
-    <br><br>
   </div>
-</div>
+
+  <div class="section grey lighten-5">
+    <div class="container">
+      <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+          <div class="col s12 m8 l8 offset-m2 offset-l2">
+            <div class="icon-block black-text center-aligh">
+              <h2 class="center"><i class="material-icons">flash_on</i></h2>
+              <h5 class="center">EXECUTE THE TESTS</h5>
+
+              <p class="grey-text text-darken-2 center-align">Once the test scenario is defined and validations expressed, now use
+                the Jet Probe CLI to execute the validations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m12 l12">
+              <pre><code class="bash">
+             #Create the config.yml with the following contents
+             api.server.host : 10.22.134.21
+             mongo.host : mongoserver
+
+             # Run the tests
+             jetprobe --testjar /path/to/sample-scenario.jar \
+             --config /path/to/config.yml \
+             --reportPath /path/to/report.html
+
+              </code></pre>
+
+              <div class="center" style="margin-top:30px;">
+              <a href="/docs/introduction/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Read Introduction</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {{ partial "footer" . }}
 {{ partial "footer_js" . }}
   </body>

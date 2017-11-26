@@ -32,8 +32,8 @@ After installing JetProbe, verify the installation worked by opening a new termi
 
 ```sh
 $ jetprobe -v
-jetprobe 0.1.0-SNAPSHOT
-build : 86f0f6fcf17f832214a1ff38017f6ed5c9db67e0
+jetprobe 0.2.0-SNAPSHOT
+build : 9bd6cacff213741ffdeb87813e66418859675da0
 ```
 For getting the list of supported options just type `jetprobe --help`. Here's the expected output.
 ```
@@ -48,13 +48,31 @@ Usage: jetprobe [options]
 
 ## Create and Run tests
 
-Currently all the tests need to be written in Scala, a language offering functional programming paradigm for JVM. Every test class unlike a Junit test must extend the TestScenario trait. A trait in Scala is similar to interfaces in Java, which consists of a single method `buildScenario`. This method needs to be overridden by the Custom test class. Here is an example of the most basic test Scenario.
+### Add the library
+
+If you are using SBT, then add the following as the library dependencies. Currently the libraries are available for Scala 2.11 and 2.12.
+
+```
+//Currently the project is in early development. Expect to get few nasty errors.
+resolvers +=
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
+libraryDependencies ++= Seq(
+    "com.jetprobe" %% "jetprobe-core" % "0.1.0-SNAPSHOT",
+    "com.jetprobe" %% "jetprobe-rabbitmq" % "0.1.0-SNAPSHOT",
+    "com.jetprobe" %% "jetprobe-mongo" % "0.1.0-SNAPSHOT"
+  )
+```
+Once you have added the required libraries, start by creating a Scala class to define the scenario that needs to be validated. In this case, we are trying to validate the creation of exchange, once a http request is executed.
+
+Currently all the tests need to be written in Scala, a language offering functional programming paradigm for JVM. Every test class unlike a Junit test must extend the TestScenario trait. A trait in Scala is similar to interfaces in Java, which consists of a single method `buildScenario`. This method needs to be overridden by the Custom test class. Here is an example of Hello Test Suite in JetProbe.
 
 ```Scala
 import com.jetprobe.core.TestScenario
 import com.jetprobe.core.structure.ExecutableScenario
 import scala.concurrent.duration._
 
+@TestSuite
 class MyFirstTest extends TestScenario {
 
   override def buildScenario: ExecutableScenario = {
