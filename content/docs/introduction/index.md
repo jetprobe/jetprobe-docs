@@ -6,7 +6,7 @@ weight: 20
 
 ## What is JetProbe ?
 
-JetProbe is a framework to build and run integration test for big data pipelines. It allows you to invoke http requests, ingest random test data and pause for the data pipeline to finish before running the validations.
+JetProbe is an open source framework to build and run integration test for big data pipelines. It allows you to invoke http requests, ingest random test data and pause for the data pipeline to finish before running the validations.
 
 The framework allows to validate both the attributes and the data stored in the infrastructure component. An infrastructure component can be a database, a messaging queue, a distributed processing engine(Spark, Flink ), a search engine (Solr, Elastic search) or a microservice.
 
