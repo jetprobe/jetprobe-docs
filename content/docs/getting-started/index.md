@@ -58,10 +58,50 @@ resolvers +=
   "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= Seq(
-    "com.jetprobe" %% "jetprobe-core" % "0.1.0-SNAPSHOT",
-    "com.jetprobe" %% "jetprobe-rabbitmq" % "0.1.0-SNAPSHOT",
-    "com.jetprobe" %% "jetprobe-mongo" % "0.1.0-SNAPSHOT"
+    "com.jetprobe" %% "jetprobe-core" % "0.2.0-SNAPSHOT",
+    "com.jetprobe" %% "jetprobe-rabbitmq" % "0.2.0-SNAPSHOT",
+    "com.jetprobe" %% "jetprobe-mongo" % "0.2.0-SNAPSHOT",
+    "com.jetprobe" %% "jetprobe-consul" % "0.2.0-SNAPSHOT"
   )
+```
+
+If you are using maven as the build tool, then you can add the following dependencies
+
+```xml
+<!-- Add the snapshots repository -->
+<repositories>
+     <repository>
+       <id>snapshots-repo</id>
+       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+       <releases><enabled>false</enabled></releases>
+       <snapshots><enabled>true</enabled></snapshots>
+     </repository>
+</repositories>
+
+<properties>
+  <scala.version>2.12</scala.version>
+<properties>
+
+<dependency>
+    <groupId>com.jetprobe</groupId>
+    <artifactId>jetprobe-core_${scala.version}</artifactId>
+    <version>0.2.0-SNAPSHOT</version>
+</dependency>
+<dependency>
+    <groupId>com.jetprobe</groupId>
+    <artifactId>jetprobe-rabbitmq_${scala.version}</artifactId>
+    <version>0.2.0-SNAPSHOT</version>
+</dependency>
+<dependency>
+    <groupId>com.jetprobe</groupId>
+    <artifactId>jetprobe-mongo_${scala.version}</artifactId>
+    <version>0.2.0-SNAPSHOT</version>
+</dependency>
+<dependency>
+    <groupId>com.jetprobe</groupId>
+    <artifactId>jetprobe-consul_${scala.version}</artifactId>
+    <version>0.2.0-SNAPSHOT</version>
+</dependency>
 ```
 Once you have added the required libraries, start by creating a Scala class to define the scenario that needs to be validated. In this case, we are trying to validate the creation of exchange, once a http request is executed.
 
@@ -69,11 +109,12 @@ Currently all the tests need to be written in Scala, a language offering functio
 
 ```Scala
 import com.jetprobe.core.TestScenario
+import com.jetprobe.core.annotation.TestSuite
 import com.jetprobe.core.structure.ExecutableScenario
 import scala.concurrent.duration._
 
 @TestSuite
-class MyFirstTest extends TestScenario {
+class HelloJetProbe extends TestScenario {
 
   override def buildScenario: ExecutableScenario = {
 
