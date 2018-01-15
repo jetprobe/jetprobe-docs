@@ -22,43 +22,40 @@
   <li><a class="grey-text text-darken-2" href="https://github.com/jetprobe/jetprobe">Github</a></li>
 </ul>
 
-  <div class="section no-pad-bot bg-img" id="index-banner">
-    <div class="container banner-main">
-      <br><br>
-      <h1 class="center brand-logo white-text">{{ .Site.Title }}</h1>
-      <div class="row center">
-        <h5 class="col s12 light grey-text text-lighten-4">Validations for data pipelines simplified.</h5>
-        <h6 class="grey-text lighten-4">Currently in early stage development. Expect surprises.</h6>
-      </div>
-      <div class="row center">
-        <a href="/docs/getting-started/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Get Started</a>
-        <a href="https://github.com/jetprobe/jetprobe/releases" id="download-button" class="btn-large waves-effect waves-light white grey-text text-darken-2">Download</a>
-      </div>
-      <br><br>
-
+<div class="section no-pad-bot bg-img" id="index-banner">
+  <div class="container banner-main">
+    <br><br>
+    <h1 class="center brand-logo white-text">{{ .Site.Title }}</h1>
+    <div class="row center">
+      <h5 class="col s12 light grey-text text-lighten-4">Validations for data pipelines simplified.</h5>
+      <h6 class="grey-text lighten-4">Currently in early stage development. Expect surprises.</h6>
     </div>
+    <div class="row center">
+      <a href="/docs/getting-started/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Get Started</a>
+      <a href="https://github.com/jetprobe/jetprobe/releases" id="download-button" class="btn-large waves-effect waves-light white grey-text text-darken-2">Download</a>
+    </div>
+    <br><br>
+
   </div>
+</div>
 
-  <div class="section grey lighten-4">
-    <div class="container">
-      <div class="section">
+<!-- <div class="section grey lighten-4">
+  <div class="container">
+    <div class="section">
 
-        <!--   Icon Section   -->
-        <div class="row">
-          <div class="col s12 m8 l8 offset-m2 offset-l2">
-            <div class="icon-block black-text">
-              <h2 class="center"><i class="material-icons">group</i></h2>
-              <h5 class="center">DEVELOPERS FIRST</h5>
+       <div class="row">
+        <div class="col s12 m8 l8 offset-m2 offset-l2">
+          <div class="icon-block black-text">
+            <h2 class="center"><i class="material-icons">group</i></h2>
+            <h5 class="center">DEVELOPERS FIRST</h5>
 
-              <p class="grey-text text-darken-2 center">Jet Probe provides
-                easy to use and understand test DSL to express scenarios and eliminates the need to connect, fetch or insert to different
-              infrastructure components like files, databases, messaging queues or other HTTP services.</p>
-            </div>
+            <p class="grey-text text-darken-2 center">Jet Probe provides easy to use and understand test DSL to express scenarios and eliminates the need to connect, fetch or insert to different infrastructure components like files, databases, messaging queues or other HTTP services.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col m12 l12">
-              <pre><code class="scala">
+      </div>
+      <div class="row">
+        <div class="col m12 l12">
+          <pre><code class="scala">
              //Defing the insert post request
              val insertPost = Http("insertionPost")
                             .post("https://${api.server.host}/api/users")
@@ -85,52 +82,138 @@
                }
              }
               </code></pre>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div> -->
 
-  <div class="section grey lighten-5">
-    <div class="container">
-      <div class="section">
+<div class="section grey lighten-4">
+  <div class="container">
+    <div class="section">
 
-        <!--   Icon Section   -->
-        <div class="row">
-          <div class="col s12 m8 l8 offset-m2 offset-l2">
-            <div class="icon-block black-text center-aligh">
-              <h2 class="center"><i class="material-icons">flash_on</i></h2>
-              <h5 class="center">EXECUTE THE TESTS</h5>
+      <!--   Icon Section   -->
+      <!-- <div class="row">
+        <div class="col s12 m8 l8 offset-m2 offset-l2">
+          <div class="icon-block black-text center-aligh">
+            <h2 class="center"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">EXECUTE THE TESTS</h5>
 
-              <p class="grey-text text-darken-2 center-align">Once the test scenario is defined and validations expressed, now use
-                the Jet Probe CLI to execute the validations.</p>
-            </div>
+            <p class="grey-text text-darken-2 center-align">Once the test scenario is defined and validations expressed, now use the Jet Probe CLI to execute the validations.</p>
           </div>
         </div>
-        <div class="row">
-          <div class="col m12 l12">
-              <pre><code class="bash">
-             #Create the config.yml with the following contents
-             api.server.host : 10.22.134.21
-             mongo.host : mongoserver
+      </div> -->
+      <div class="row">
+        <div class="col m12 l12">
+            <h4 class="center">HOW IT WORKS</h4>
+          <section id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-sequence">
+                <span>01</span>
+                <!-- <img src="img/cd-icon-picture.svg" alt="Picture"> -->
+              </div>
 
-             # Run the tests
-             jetprobe --testjar /path/to/sample-scenario.jar \
-             --config /path/to/config.yml \
-             --reportPath /path/to/report.html
+              <div class="card white cd-timeline-content">
+                <div class="card-content  grey-text text-darken-3">
+                  <pre><code class="scala">
+val sshConf = SSHConfig(host, "admin", "pass")
 
-              </code></pre>
 
-              <div class="center" style="margin-top:30px;">
-              <a href="/docs/introduction/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Read Introduction</a>
+ ssh(sshConf) { client =>
+  client.upload(from = "/data/file.in",to = "/tmp/data.in")
+  client.run("./runnable.sh -t /tmp/data.in")
+ }
+
+                      </code></pre>
+                      <div class="cd-text">
+                        <h2 class="heading">Define the Setup</h2>
+                        <p>Leverage the expressive API to define the sequence of actions that would be part
+                        of the test scenario.</p>
+                      </div>
+                  </div>
+                  <div class="card-action">
+                     <a href="#">Read More</a>
+                  </div>
+              </div>
+
+              <!-- cd-timeline-content -->
             </div>
-          </div>
+
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-sequence">
+                <span>02</span>
+              </div>
+              <!-- cd-timeline-img -->
+
+              <div class="card white cd-timeline-content">
+                <div class="card-content  grey-text text-darken-3">
+                  <pre><code class="scala">
+validateWith(hbaseConf) { hbase =>
+ given(hbase query[Post] "select post.title,post.likes from table")
+ { result =>
+
+     assertEquals(3, result.size)
+     assertEquals(1, result.count(p => p.likes > 2500))
+  }
+}
+
+                      </code></pre>
+                      <div class="cd-text">
+                        <h2 class="heading">Write the Validations</h2>
+                        <p>The next step is to express the assertions that would be validated against the
+                          data stored in the target system, which in this case is HBase.</p>
+                      </div>
+                  </div>
+                  <div class="card-action">
+                     <a href="#">Read More</a>
+                  </div>
+              </div>
+              <!-- cd-timeline-content -->
+            </div>
+            <!-- cd-timeline-block -->
+
+            <div class="cd-timeline-block">
+              <div class="cd-timeline-img cd-sequence">
+                <span>03</span>
+                <!-- <img src="img/cd-icon-picture.svg" alt="Picture"> -->
+              </div>
+
+              <div class="card white cd-timeline-content">
+                <div class="card-content  grey-text text-darken-3">
+                  <pre><code class="scala">
+val sshConf = SSHConfig(host, "admin", "pass")
+
+
+ ssh(sshConf) { client =>
+  client.upload(from = "/data/file.in",to = "/tmp/data.in")
+  client.run("./runnable.sh -t /tmp/data.in")
+ }
+
+                      </code></pre>
+                      <div class="cd-text">
+                        <h2 class="heading">Execute and view the results</h2>
+                        <p>Once the scenario has been defined, execute the validation using jetprobe CLI to view the validation report.</p>
+                      </div>
+                  </div>
+                  <div class="card-action">
+                     <a href="#">Read More</a>
+                  </div>
+              </div>
+
+              <!-- cd-timeline-content -->
+            </div>
+
+            <!-- cd-timeline-block -->
+          </section>
+
         </div>
+
       </div>
     </div>
   </div>
+</div>
 
-{{ partial "footer" . }}
-{{ partial "footer_js" . }}
-  </body>
+{{ partial "footer" . }} {{ partial "footer_js" . }}
+</body>
+
 </html>

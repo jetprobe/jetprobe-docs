@@ -32,10 +32,12 @@ Here `${server.hostname}` is a variable that can be interpolated based on the co
 Once you have defined the request, then you can use http(...) helper method to include the above request as a part of the data pipline test.
 
 ```Scala
-scenario("Http Test")
-.http(getRequest)
-.pause(1.seconds)
-.http(postRequest)
+
+http(getRequest)
+
+pause(1.seconds)
+
+http(postRequest)
 ```
 
 Now you may also want to extract a some data from a request and use it in downstream processing.
@@ -70,7 +72,7 @@ The pause action takes a duration as an parameter.
 
 **A Pause Action example**
 ```scala
-scenario("A pause scenario").pause(4.seconds)
+pause(4.seconds)
 ```
 
 ## SSH Action
@@ -83,15 +85,15 @@ A ssh action allows the developers to execute a remote command by providing the 
 //First define the ssh config
 val sshConfig = SSHConfig(user = "admin", password = "secret", hostName = "xx.xx.xx.xx")
 
-//Define the scenario
-scenario("shell cmd scenario")
-  .ssh(sshConfig, cmd = "cd /home/me/apps && mkdir temp && ls")
-  .build
+ssh(sshConfig) { client =>
+  client.run("cd /home/me/apps && mkdir temp && ls")
+}
+
 ```
 
 ## Validation action
 
-Validation actions take the `sink`, as a parameter which is nothing but the target that needs to be validated, and also the collection of validation rules that needs
+Validation actions take the `storage configuration`, as a parameter which is nothing but the target that needs to be validated, and also the collection of validation rules that needs
 to be executed for that particular sink.
 
 A sink could be a database, a file, a messaging infrastructure or any http service. In the next section, we would see how to write validations for a given sink.

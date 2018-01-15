@@ -7,7 +7,6 @@
       var repo_id  = '';
     {{ end }}
     </script>
-
     <script src="{{ "javascripts/application.js" | absURL }}"></script>
     {{ range .Site.Params.custom_js }}
     <script src="{{ . | absURL }}"></script>
@@ -75,13 +74,13 @@
           }
         });
         /* Register handler to log search on blur */
-        var query = document.querySelector('.query');
-        query.addEventListener('blur', function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga('send', 'pageview', path + '?q=' + this.value);
-          }
-        });
+        // var query = document.querySelector('.query');
+        // query.addEventListener('blur', function() {
+        //   if (this.value) {
+        //     var path = document.location.pathname;
+        //     ga('send', 'pageview', path + '?q=' + this.value);
+        //   }
+        // });
       </script>
     {{ end }}
     <script src="{{ "javascripts/highlight.pack.js" | absURL }}"></script>

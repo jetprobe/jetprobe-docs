@@ -21,9 +21,11 @@ The framework allows to validate both the attributes and the data stored in the 
 
 The following components are currently supported by the JetProbe framework.
 
-* Web Services with JSON response
+* REST APIs with JSON response
 * MongoDB
 * RabbitMQ
+* HBase
+* HDFS
 
 ## Terminologies
 

@@ -24,7 +24,7 @@ This would add the jetprobe located at  `/home/<user>/local/bin/jetprobe` to the
 Assuming that java is installed and available in the `PATH` use the below commands to add the `jetprobe` executable to the current `PATH`.
 ```sh
 C:\Users\Me>jar xf jetprobe-<version>.zip
-C:\Users\Me>SET PATH=%PATH%;%cd%\jetprobe-0.1.0-SNAPSHOT\bin
+C:\Users\Me>SET PATH=%PATH%;%cd%\jetprobe-0.2.0-SNAPSHOT\bin
 ```
 
 ## Verify the Installation
@@ -61,7 +61,7 @@ libraryDependencies ++= Seq(
     "com.jetprobe" %% "jetprobe-core" % "0.2.0-SNAPSHOT",
     "com.jetprobe" %% "jetprobe-rabbitmq" % "0.2.0-SNAPSHOT",
     "com.jetprobe" %% "jetprobe-mongo" % "0.2.0-SNAPSHOT",
-    "com.jetprobe" %% "jetprobe-consul" % "0.2.0-SNAPSHOT"
+    "com.jetprobe" %% "jetprobe-hadoop" % "0.2.0-SNAPSHOT"
   )
 ```
 
@@ -99,7 +99,7 @@ If you are using maven as the build tool, then you can add the following depende
 </dependency>
 <dependency>
     <groupId>com.jetprobe</groupId>
-    <artifactId>jetprobe-consul_${scala.version}</artifactId>
+    <artifactId>jetprobe-hadoop_${scala.version}</artifactId>
     <version>0.2.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -110,15 +110,29 @@ Currently all the tests need to be written in Scala, a language offering functio
 ```Scala
 import com.jetprobe.core.TestScenario
 import com.jetprobe.core.annotation.TestSuite
-import com.jetprobe.core.structure.ExecutableScenario
-import scala.concurrent.duration._
+import com.jetprobe.core.structure.ScenarioBuilder
+import com.jetprobe.mongo.storage.MongoDBConf
 
-@TestSuite
+@TestSuite("Hello Jetprobe")
 class HelloJetProbe extends TestScenario {
 
-  override def buildScenario: ExecutableScenario = {
+  val getUserInfo = Http("Create Foo ")
+                    .post("http://api.server.com/v1/foo/1")
+                    .body("{ 'name' : 'foo'}")
 
-    scenario("FirstTest").pause(5.seconds)
+  val mongoConf = new MongoDBConf("mongodb://xxx.xxx.xx.xx")
+
+  override def actions: ScenarioBuilder = {
+
+    http(getUserInfo)
+
+    //Validate the properties of Foo database
+    validateWith(mongoConf){ mongo =>
+
+      given(mongo.getDatabaseStats("foo")){ dbStats =>
+        assertEquals(2,dbStats.get("indexes").get.asInt32().getValue)
+      }
+    }
 
   }
 }
@@ -128,4 +142,4 @@ The above test once executed will just pause the test pipeline for 5 seconds and
 Once done, create a packaged jar and use the jetprobe CLI to run the test jar as below.
 `jetprobe -testjar /path/to/packaged-test.jar`
 
-Currently the framework supports testing of RabbitMQ and MongoDB component properties. Head over to the next [section](../writing-validations) to know more about writing tests.
+Currently the framework supports testing of RabbitMQ, MongoDB, HDFS and HBase component properties. Head over to the next [section](../writing-validations) to know more about writing tests.
