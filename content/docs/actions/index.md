@@ -91,9 +91,54 @@ ssh(sshConfig) { client =>
 
 ```
 
+## Custom Action
+
+A custom action for a target storage can be executed by defining the configuration required to connect to the storage system, and
+then leverage the underlying APIs exposed by the Storage system.
+
+**File Based Action**
+```scala
+val fs = new FilePath("/path/to/file.in")
+
+//custom action with file
+doWith(fs) { file =>
+
+      //read the file
+      file.lines().foreach(println)
+
+      //delete the file
+      file.rm
+
+      //copy the file
+      file.copyTo("/path/to/destination")
+
+      //Want something more ? Check this out
+      file.usingFile[T](fn : File => T) : T
+    }
+```
+In the above example, the `doWith` function takes a configuration pertaining to a storage system, and takes another callback function to execute file based commands.
+
+Here's another example for HDFS
+
+**HDFS Based Action**
+```scala
+val hdfsConf = new HDFSConfig("hdfs://<namenode-host>","loginUser")
+
+doWith(hdfsConf){ hadoop =>
+
+        //Copy to hdfs
+        hadoop.copyFromLocal(localSrc= "/local/file", destination = "/user/hdfs/path")
+
+        //Copy to local from hdfs
+        hadoop.copyToLocal("/user/hdfs/srcPath","/local/save/path")
+
+      }
+
+```
+
 ## Validation action
 
 Validation actions take the `storage configuration`, as a parameter which is nothing but the target that needs to be validated, and also the collection of validation rules that needs
 to be executed for that particular sink.
 
-A sink could be a database, a file, a messaging infrastructure or any http service. In the next section, we would see how to write validations for a given sink.
+A storage could be a database, a file, a messaging infrastructure or any http service. In the next section, we would see how to write validations for a given storge.

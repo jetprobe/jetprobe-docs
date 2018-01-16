@@ -39,70 +39,65 @@
   </div>
 </div>
 
-<!-- <div class="section grey lighten-4">
+
+<div class="section white lighten-5">
   <div class="container">
     <div class="section">
 
-       <div class="row">
-        <div class="col s12 m8 l8 offset-m2 offset-l2">
-          <div class="icon-block black-text">
-            <h2 class="center"><i class="material-icons">group</i></h2>
-            <h5 class="center">DEVELOPERS FIRST</h5>
+      <div class="row">
 
-            <p class="grey-text text-darken-2 center">Jet Probe provides easy to use and understand test DSL to express scenarios and eliminates the need to connect, fetch or insert to different infrastructure components like files, databases, messaging queues or other HTTP services.</p>
+        <div class="col s12 m4">
+          <div class="card white">
+            <div class="center">
+              <img class="heading-logo" src="/images/faster.png" alt="">
+              <!-- <a class="heading-logo btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">fast_forward</i></a> -->
+            </div>
+            <div class="card-content grey-text">
+              <span class="card-title black-text center">Fast development</span>
+              <p>Write automation tests for the data pipeline faster, by leveraging the concise, expressive language - Scala.</p>
+            </div>
+
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col m12 l12">
-          <pre><code class="scala">
-             //Defing the insert post request
-             val insertPost = Http("insertionPost")
-                            .post("https://${api.server.host}/api/users")
-                            .body(
-                              fromFile("""/home/sa/data/rest-payload.json""")
-                              )
 
-            //Define the mongo db connection detail
-            val mongo = MongoSink("mongodb://${mongo.host}/")
+        <div class="col s12 m4">
+          <div class="card white">
+            <div class="center">
+              <img class="heading-logo" src="/images/ext.png" alt="">
+              <!-- <a class="heading-logo btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">settings_input_component</i></a> -->
+            </div>
+            <div class="card-content grey-text">
+              <span class="card-title black-text center">Multiple Integrations</span>
+              <p>Write tests to target common big data infrastructure components like HBase, HDFS, MongoDB and RabbitMQ.</p>
+            </div>
 
-             //Define the scenario, expressed as series of steps
-             scenario("Fetch Posts Scenario")
-                 .http(insertPost)
-                 .validate[HttpRequestBuilder](insertPost) {
-                   given(jsonQuery = "$.userId")(
-                   checkExtractedValue[Boolean](true, x => x.startsWith("100"))
-                 )
-               }
-                .pause(2.seconds)
-                .validate[MongoSink](mongo) {
-                 given(mongo(database = "user.posts"))(
-                  checkDBStats[Boolean](true, _.collections == 10)
-                )
-               }
-             }
-              </code></pre>
+          </div>
         </div>
+
+        <div class="col s12 m4">
+          <div class="card white">
+            <div class="center">
+              <img class="heading-logo" src="/images/integration.png" alt="">
+            </div>
+            <div class="card-content grey-text">
+              <span class="card-title black-text center">Easily Extensible</span>
+              <p>Add custom actions and validaton rules for your favorite tools,
+                 using the pluggable API exposed by the Jetprobe framework.</p>
+            </div>
+
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <div class="section grey lighten-4">
   <div class="container">
     <div class="section">
 
-      <!--   Icon Section   -->
-      <!-- <div class="row">
-        <div class="col s12 m8 l8 offset-m2 offset-l2">
-          <div class="icon-block black-text center-aligh">
-            <h2 class="center"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">EXECUTE THE TESTS</h5>
-
-            <p class="grey-text text-darken-2 center-align">Once the test scenario is defined and validations expressed, now use the Jet Probe CLI to execute the validations.</p>
-          </div>
-        </div>
-      </div> -->
       <div class="row">
         <div class="col m12 l12">
             <h4 class="center">HOW IT WORKS</h4>
@@ -132,7 +127,7 @@ val sshConf = SSHConfig(host, "admin", "pass")
                       </div>
                   </div>
                   <div class="card-action">
-                     <a href="#">Read More</a>
+                     <a href="/docs/actions/">Read More</a>
                   </div>
               </div>
 
@@ -148,9 +143,13 @@ val sshConf = SSHConfig(host, "admin", "pass")
               <div class="card white cd-timeline-content">
                 <div class="card-content  grey-text text-darken-3">
                   <pre><code class="scala">
+case class Post(title : String, likes : Int)
+
 validateWith(hbaseConf) { hbase =>
- given(hbase query[Post] "select post.title,post.likes from table")
- { result =>
+
+val sql = "select post.title,post.likes from table"
+val query = hbase.select[Post](sql,parse(_).extract[Post])
+ given(query) { result =>
 
      assertEquals(3, result.size)
      assertEquals(1, result.count(p => p.likes > 2500))
@@ -165,7 +164,7 @@ validateWith(hbaseConf) { hbase =>
                       </div>
                   </div>
                   <div class="card-action">
-                     <a href="#">Read More</a>
+                     <a href="/docs/writing-validations/">Read More</a>
                   </div>
               </div>
               <!-- cd-timeline-content -->
@@ -181,13 +180,11 @@ validateWith(hbaseConf) { hbase =>
               <div class="card white cd-timeline-content">
                 <div class="card-content  grey-text text-darken-3">
                   <pre><code class="scala">
-val sshConf = SSHConfig(host, "admin", "pass")
+jetprobe --testjar /path/to/sample-scenario.jar \
+--config /path/to/config.yml \
+--reportPath /path/to/report.html
 
 
- ssh(sshConf) { client =>
-  client.upload(from = "/data/file.in",to = "/tmp/data.in")
-  client.run("./runnable.sh -t /tmp/data.in")
- }
 
                       </code></pre>
                       <div class="cd-text">
@@ -196,7 +193,7 @@ val sshConf = SSHConfig(host, "admin", "pass")
                       </div>
                   </div>
                   <div class="card-action">
-                     <a href="#">Read More</a>
+                     <a href="/docs/getting-started/#create-and-run-tests">Read More</a>
                   </div>
               </div>
 

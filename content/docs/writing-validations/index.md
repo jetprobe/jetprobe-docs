@@ -8,31 +8,47 @@ weight: 30
 
 Validations are special actions, designated to validate the state of an infrastructure component.
 
-## RabbitMQ Validations
+## HDFS Validations
 
-Let's look at a scenario where we would want to validate if the particular component of RabbitMQ infrastructure has been initialized before we start the stream
-processing.
+In the previous section we saw how to execute actions on HDFS without verbosity existing in the respective Java APIs. In this section we will how to write validations for the HDFS Storage.
 
-```Scala
-//create the RabbitMQ instance that needs to be validated. The host here ${rabbit.host} would be resolved at the runtime.
-val rabbit = RabbitMQSink("${rabbit.host}")
+```scala
+validateWith(hdfsConf){ hdfs =>
 
-//Define the scenario which has the validation as part of the entire data validation pipeline.
-scenario("RabbitMQ validation")
-.validate[RabbitMQSink](rabbitMQ) {
+      //Fetch the property that needs to be validated
+      val fileStatus = hdfs.usingFS(fs => fs.getFileStatus(new Path("/user/hdfs/data.in")))
 
-    // the second parameter takes a collection(Seq in scala) of validation rules for the RabbitMQ Sink
-      given(exchange("amq.topic", "/"))(
-        //a type parameterized method, where type signifies the result type of the validation.
-        checkExchange[Boolean](true, exchangeProps => exchangeProps.durable),
-        checkExchange[Boolean](false, _.isAutoDelete)
-      )
+      //Use the given function as the behavior driven test constructor
+      given(fileStatus) { status =>
+        assertEquals(10285689L,status.getBlockSize)
+      }
     }
- .build
+```
+Every `validateWith` function, acts as validation action builder, which takes the Storage configuration as a parameter and expects a function that would build a validation rule with the returned Storage instance.
+```scala
+def validateWith[S <: Storage](config: Config[S])(fnRuleBuilder : S => ValidationRule[S])
 ```
 
-The test utility method `checkExchange` takes the expected output value of the function that would be executed on the actual Exchange properties that would be fetched
-by the JetProbe framework during the runtime. This way the framework frees the developers to write the boilerplate code pertaining to connecting to RabbitMQ and fetching the
+**RabbitMQ Validations**
+```Scala
+//create the RabbitMQ instance that needs to be validated. The host here ${rabbit.host} would be resolved at the runtime.
+val rabbit = new RabbitMQConfig("${rabbit.host}")
+
+validateWith(rabbitConf) { rabbit =>
+
+      val listofExchanges = rabbit.usingAdmin(admin => admin.getExchanges)
+
+      given(listofExchanges) { exchanges =>
+        val exchangNames = exchanges.asScala.map(_.getName)
+
+        assertEquals(true, exchangNames.contains("amq.topic"))
+        assertEquals("amq.headers", exchangNames.find(_.contains("headers")).get)
+
+      }
+    }
+```
+
+The validation rule builder `given` method takes the state of the object that needs to be validated and the state is created at the runtime by the JetProbe. This way the framework frees the developers to write the boilerplate code pertaining to connecting to RabbitMQ and fetching the
 required details, instead the developer would just need to extract the required value for validating the state of the component.
 
 ## MongoDB Validations
@@ -43,34 +59,16 @@ given the state of the component as a POJO/case class(approx).
 ```scala
 
 // Declare the instance of MongoDB Sink that needs to be validated
- val mongo = MongoSink("mongodb://${mongo.host}/")
+ val mongo = new MongoDBConf("mongodb://${mongo.host}/")
 
-//Define the scenario which has the validation as part of the entire data validation pipeline.
-scenario("MongoDB validation")
-.validate[MongoSink](mongo){
+ validateWith(mongoConf){ mongo =>
 
-//General server stats validation rules
-  val serverValidations = Seq(
-      checkStats[String]("3.4.0", _.version),
-      checkStats[Boolean](true, _.version.startsWith("3.4")),
-      checkStats[Boolean](true, _.connections.current < 50),
-      checkStats[Long](80L, _.opcounters.insert)
-    )
+      given(mongo.getDatabaseStats("zoo")){ dbStats =>
 
-  // Validations for the given database
-  val databaseStats = given(mongo("${customer.transaction.db}"))(
-      checkDBStats[Boolean](true, _.collections == 10)
-    )    
-
-  // Add both the validations
-  serverValidations ++ databaseStats
-}
+        assertEquals(2,dbStats.get("indexes").get.asInt32().getValue)
+      }
+    }
 ```
-Just like the RabbitMQ validations, the JetProbe framework provides the developer with helper methods to express different validation rules. Other helper methods are :
-
-* **checkDatabaseList** : Fetches the list of databases
-* **checkCollectionStats** : Fetches the details of the given collection in a database.
-* **checkDocuments** : Given a Mongo query, it fetches the list of documents, against which validation rules can be written.
 
 ## HTTP validations
 
