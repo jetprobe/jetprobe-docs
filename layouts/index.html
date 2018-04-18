@@ -1,216 +1,54 @@
-{{ partial "head" . }}
-
-<div class="navbar-fixed">
-  <nav class="nav-white dark-bg" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="/" class="brand-logo white-text">
-        Jet Probe
-        <!--img src="/images/brand.png" alt="Brand" style="height : 35px; margin-top: 15px;" /-->
-      </a>
-      <ul class="right hide-on-med-and-down">
-        <li><a class="white-text" href="/docs/introduction"><b>Docs</b></a></li>
-        <li><a class="white-text" href="https://github.com/jetprobe/jetprobe"><b>Github</b></a></li>
+{{ partial "new-head" . }}
+<div class="main blue-grey-text text-darken-4">
+  <nav class="navbar-fixed black-text">
+    <div class="nav-wrapper black-text">
+      <img class="brand-logo-image" src="/images/new/logo.png"></img>
+      <a href="#" class="brand-logo blue-grey-text text-darken-4">Jetprobe</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="blue-grey-text text-darken-4" href="/docs/introduction">Documentation</a></li>
+        <li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe">Github</a></li>
       </ul>
-
-
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
     </div>
   </nav>
-</div>
-<ul id="nav-mobile" class="side-nav">
-  <li><a class="grey-text text-darken-2" href="/docs/introduction">Docs</a></li>
-  <li><a class="grey-text text-darken-2" href="https://github.com/jetprobe/jetprobe">Github</a></li>
-</ul>
-
-<div class="section no-pad-bot bg-img" id="index-banner">
-  <div class="container banner-main">
-    <br><br>
-    <h1 class="center brand-logo white-text">{{ .Site.Title }}</h1>
-    <div class="row center">
-      <h5 class="col s12 light grey-text text-lighten-4">Validations for data pipelines simplified.</h5>
-      <h6 class="grey-text lighten-4">Currently in early stage development. Expect surprises.</h6>
+  <div class="landing valign-wrapper">
+    <div class="landing-hero row container">
+      <div class="landing-content col s6 center">
+        <div class="landing-logo"><h1 class="center brand-logo">Jetprobe</h1></div>
+        <div class="landing-tagline">Define. Execute. Validate Data Pipelines.</div>
+        <div class="landing-buttons">
+          <a href="/docs/getting-started/" class="btn btn-large landing-button custom-blue white-text custom-blue-border z-depth-0">Get Started</a>
+          <a href="https://github.com/jetprobe/jetprobe/releases" class="btn btn-large landing-button white custom-blue-text custom-blue-border z-depth-0">Download</a>
+        </div>
+      </div>
     </div>
-    <div class="row center">
-      <a href="/docs/getting-started/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Get Started</a>
-      <a href="https://github.com/jetprobe/jetprobe/releases" id="download-button" class="btn-large waves-effect waves-light white grey-text text-darken-2">Download</a>
-    </div>
-    <br><br>
-
   </div>
-</div>
-
-
-<div class="section white lighten-5">
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-
-        <div class="col s12 m4">
-          <div class="card white">
-            <div class="center">
-              <img class="heading-logo" src="/images/faster.png" alt="">
-              <!-- <a class="heading-logo btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">fast_forward</i></a> -->
-            </div>
-            <div class="card-content grey-text">
-              <span class="card-title black-text center">Fast development</span>
-              <p>Write automation tests for the data pipeline faster, by leveraging the concise, expressive language - Scala.</p>
-            </div>
-
-          </div>
+  <div class="feature-section center">
+    <h2 class="why">Why use Jetprobe</h2>
+    <div class="features container row center">
+      <div class="feature col s4">
+        <div class="feature-image fimg-1">
         </div>
-
-        <div class="col s12 m4">
-          <div class="card white">
-            <div class="center">
-              <img class="heading-logo" src="/images/ext.png" alt="">
-              <!-- <a class="heading-logo btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">settings_input_component</i></a> -->
-            </div>
-            <div class="card-content grey-text">
-              <span class="card-title black-text center">Multiple Integrations</span>
-              <p>Write tests to target common big data infrastructure components like HBase, HDFS, MongoDB and RabbitMQ.</p>
-            </div>
-
-          </div>
+        <div class="feature-name"><h3>Faster Development</h3></div>
+        <div class="feature-text">Speed up the development of automation tests, with expressive and concise workflow definition language developed in Scala.</div>
+      </div>
+      <div class="feature col s4">
+        <div class="feature-image fimg-2">
         </div>
-
-        <div class="col s12 m4">
-          <div class="card white">
-            <div class="center">
-              <img class="heading-logo" src="/images/integration.png" alt="">
-            </div>
-            <div class="card-content grey-text">
-              <span class="card-title black-text center">Easily Extensible</span>
-              <p>Add custom actions and validaton rules for your favorite tools,
-                 using the pluggable API exposed by the Jetprobe framework.</p>
-            </div>
-
-          </div>
+        <div class="feature-name"><h3>Multiple Integrations</h3></div>
+        <div class="feature-text">Write validation rules, against different big data infrastructure components like HBase, HDFS and MongoDB.</div>
+      </div>
+      <div class="feature col s4">
+        <div class="feature-image fimg-3">
         </div>
-
-
+        <div class="feature-name"><h3>Easily Extensible</h3></div>
+        <div class="feature-text">Add custom tasks and validation rules for your favorite tools, using pluggable APIs of Jetprobe framework.</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section grey lighten-4">
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col m12 l12">
-            <h4 class="center">HOW IT WORKS</h4>
-          <section id="cd-timeline" class="cd-container">
-            <div class="cd-timeline-block">
-              <div class="cd-timeline-img cd-sequence">
-                <span>01</span>
-                <!-- <img src="img/cd-icon-picture.svg" alt="Picture"> -->
-              </div>
-
-              <div class="card white cd-timeline-content">
-                <div class="card-content  grey-text text-darken-3">
-                  <pre><code class="scala">
-val sshConf = SSHConfig(host, "admin", "pass")
-
-
- ssh(sshConf) { client =>
-  client.upload(from = "/data/file.in",to = "/tmp/data.in")
-  client.run("./runnable.sh -t /tmp/data.in")
- }
-
-                      </code></pre>
-                      <div class="cd-text">
-                        <h2 class="heading">Define the Setup</h2>
-                        <p>Leverage the expressive API to define the sequence of actions that would be part
-                        of the test scenario.</p>
-                      </div>
-                  </div>
-                  <div class="card-action">
-                     <a href="/docs/actions/">Read More</a>
-                  </div>
-              </div>
-
-              <!-- cd-timeline-content -->
-            </div>
-
-            <div class="cd-timeline-block">
-              <div class="cd-timeline-img cd-sequence">
-                <span>02</span>
-              </div>
-              <!-- cd-timeline-img -->
-
-              <div class="card white cd-timeline-content">
-                <div class="card-content  grey-text text-darken-3">
-                  <pre><code class="scala">
-case class Post(title : String, likes : Int)
-
-validateWith(hbaseConf) { hbase =>
-
-val sql = "select post.title,post.likes from table"
-val query = hbase.select[Post](sql,parse(_).extract[Post])
- given(query) { result =>
-
-     assertEquals(3, result.size)
-     assertEquals(1, result.count(p => p.likes > 2500))
-  }
-}
-
-                      </code></pre>
-                      <div class="cd-text">
-                        <h2 class="heading">Write the Validations</h2>
-                        <p>The next step is to express the assertions that would be validated against the
-                          data stored in the target system, which in this case is HBase.</p>
-                      </div>
-                  </div>
-                  <div class="card-action">
-                     <a href="/docs/writing-validations/">Read More</a>
-                  </div>
-              </div>
-              <!-- cd-timeline-content -->
-            </div>
-            <!-- cd-timeline-block -->
-
-            <div class="cd-timeline-block">
-              <div class="cd-timeline-img cd-sequence">
-                <span>03</span>
-                <!-- <img src="img/cd-icon-picture.svg" alt="Picture"> -->
-              </div>
-
-              <div class="card white cd-timeline-content">
-                <div class="card-content  grey-text text-darken-3">
-                  <pre><code class="scala">
-jetprobe --testjar /path/to/sample-scenario.jar \
---config /path/to/config.yml \
---reportPath /path/to/report.html
-
-
-
-                      </code></pre>
-                      <div class="cd-text">
-                        <h2 class="heading">Execute and view the results</h2>
-                        <p>Once the scenario has been defined, execute the validation using jetprobe CLI to view the validation report.</p>
-                      </div>
-                  </div>
-                  <div class="card-action">
-                     <a href="/docs/getting-started/#create-and-run-tests">Read More</a>
-                  </div>
-              </div>
-
-              <!-- cd-timeline-content -->
-            </div>
-
-            <!-- cd-timeline-block -->
-          </section>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-{{ partial "footer" . }} {{ partial "footer_js" . }}
+<div class="hero-image"></div>
+<!-- {{ partial "footer" . }} {{ partial "footer_js" . }} -->
 </body>
 
 </html>
