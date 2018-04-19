@@ -148,4 +148,17 @@ nav {
   .nav-wrapper {
     width: 100%;
   }
+
+  .features {
+    width: 100%;
+  }
+
+  .feature-image {
+    background-size: contain !important;
+  }
 }
+
+@media only screen and (max-width: 480px) {
+  .landing-button {
+    margin-bottom: 20px;
+  }

@@ -11,7 +11,7 @@
     
     <meta name="description" content="JetProbe documentation">
     
-    <link rel="canonical" href="https://www.jetprobe.com/">
+    <link rel="canonical" href="http://b8f49eba.ngrok.io/">
     
     <meta name="author" content="Shad Amez">
     
@@ -24,27 +24,30 @@
       gtag('config', 'UA-83272953-2');
     </script>
     <meta name="google-site-verification" content="aRtG7rX84_9R66WWteI6clburVOaC7jR7Oug1zi2A4U" />
-    <meta property="og:url" content="https://www.jetprobe.com/">
+    <meta property="og:url" content="http://b8f49eba.ngrok.io/">
     <meta property="og:title" content="Jet Probe">
-    <meta property="og:image" content="https://www.jetprobe.com/images/fav.ico">
+    <meta property="og:image" content="http://b8f49eba.ngrok.io/images/fav.ico">
     <meta name="apple-mobile-web-app-title" content="Jet Probe">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="https://www.jetprobe.com/images/new/favicon.ico">
-    <link rel="icon" type="image/x-icon" href="https://www.jetprobe.com/images/new/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="http://b8f49eba.ngrok.io/images/new/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://b8f49eba.ngrok.io/images/new/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Gugi|Roboto:400,500,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="https://www.jetprobe.com/stylesheets/stylesheet.css">
+    
+    <link rel="stylesheet" href="http://b8f49eba.ngrok.io/stylesheets/stylesheet.css">
   </head>
   <body>
 
 <div class="main blue-grey-text text-darken-4">
   <nav class="navbar-fixed black-text" role="navigation">
     <div class="nav-wrapper black-text">
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
+
       <a href="#" class="nav-logo brand-logo blue-grey-text text-darken-4">
         Jetprobe
       </a>
@@ -54,7 +57,6 @@
         <li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe"><b>Github</b></a></li>
       </ul>
 
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
     </div>
   </nav>
   <ul id="nav-mobile" class="side-nav">
@@ -68,7 +70,7 @@
         <div class="landing-logo"><h1 class="center brand-logo">Jetprobe</h1></div>
         <div class="landing-tagline">Define. Execute. Validate Data Pipelines.</div>
         <div class="landing-buttons">
-          <a href="https://www.jetprobe.com/docs/getting-started/" class="btn btn-large landing-button custom-blue white-text custom-blue-border z-depth-0">Get Started</a>
+          <a href="http://b8f49eba.ngrok.io/docs/getting-started/" class="btn btn-large landing-button custom-blue white-text custom-blue-border z-depth-0">Get Started</a>
           <a href="https://github.com/jetprobe/jetprobe/releases" class="btn btn-large landing-button white custom-blue-text custom-blue-border z-depth-0">Download</a>
         </div>
       </div>
@@ -77,17 +79,17 @@
   <div class="feature-section center">
     <h2 class="feature-heading">Why use Jetprobe</h2>
     <div class="features container row center">
-      <div class="feature col s12 xl4">
+      <div class="feature-item col s12 xl4">
         <div class="fimg-1 feature-image"></div>
         <div class="feature-title"><h3>Faster Development</h3></div>
         <div class="feature-text">Speed up the development of automation tests, with expressive and concise workflow definition language developed in Scala.</div>
       </div>
-      <div class="feature col s12 xl4">
+      <div class="feature-item col s12 xl4">
         <div class="fimg-2 feature-image"></div>
         <div class="feature-title"><h3>Multiple Integrations</h3></div>
         <div class="feature-text">Write validation rules, against different big data infrastructure components like HBase, HDFS and MongoDB.</div>
       </div>
-      <div class="feature col s12 xl4">
+      <div class="feature-item col s12 xl4">
         <div class="fimg-3 feature-image"></div>
         <div class="feature-title"><h3>Easily Extensible</h3></div>
         <div class="feature-text">Add custom tasks and validation rules for your favorite tools, using pluggable APIs of Jetprobe framework.</div>
@@ -98,6 +100,11 @@
 
 <div class="hero-image hide-on-med-and-down"></div>
 
+<script>
+$( document ).ready(function(){
+  $(".button-collapse").sideNav();
+});
+</script>
 </body>
 
 </html>

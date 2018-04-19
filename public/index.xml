@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JetProbe on Jet Probe</title>
-    <link>https://www.jetprobe.com/</link>
+    <link>http://b8f49eba.ngrok.io/</link>
     <description>Recent content in JetProbe on Jet Probe</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Shad Amez. Released under the Apache license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 19:56:50 +0100</lastBuildDate>
     
-	<atom:link href="https://www.jetprobe.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://b8f49eba.ngrok.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Getting started</title>
-      <link>https://www.jetprobe.com/docs/getting-started/</link>
+      <link>http://b8f49eba.ngrok.io/docs/getting-started/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.jetprobe.com/docs/getting-started/</guid>
+      <guid>http://b8f49eba.ngrok.io/docs/getting-started/</guid>
       <description>Installation Installing Jetprobe Jetprobe is a validation framework for building tests for big data pipelines. To install Jetprobe just download the latest version .
 Once downloaded, run the following commands to configure jetprobe to run from the command line.
 On Linux $ tar -xvf /path/to/jetprobe-&amp;lt;version&amp;gt;.tgz $ cd jetprobe-&amp;lt;version&amp;gt; $ make install $ export PATH=$PATH:~/local/bin  This would add the jetprobe located at /home/&amp;lt;user&amp;gt;/local/bin/jetprobe to the PATH variable.
@@ -26,39 +26,39 @@ On Windows Assuming that java is installed and available in the PATH use the bel
     
     <item>
       <title>Introduction</title>
-      <link>https://www.jetprobe.com/docs/introduction/</link>
+      <link>http://b8f49eba.ngrok.io/docs/introduction/</link>
       <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
       
-      <guid>https://www.jetprobe.com/docs/introduction/</guid>
+      <guid>http://b8f49eba.ngrok.io/docs/introduction/</guid>
       <description>What is JetProbe ? JetProbe is an open source framework to build and run integration test for big data pipelines. It allows you to invoke http requests, ingest random test data and pause for the data pipeline to finish before running the validations.
 The framework allows to validate both the attributes and the data stored in the infrastructure component. An infrastructure component can be a database, a messaging queue, a distributed processing engine(Spark, Flink ), a search engine (Solr, Elastic search) or a microservice.</description>
     </item>
     
     <item>
       <title>Actions</title>
-      <link>https://www.jetprobe.com/docs/actions/</link>
+      <link>http://b8f49eba.ngrok.io/docs/actions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://www.jetprobe.com/docs/actions/</guid>
+      <guid>http://b8f49eba.ngrok.io/docs/actions/</guid>
       <description>Declaring Actions An action in the context of a data pipeline is a stage or a phase that is part of the entire execution. Every action is separated by a dot (.) and takes an action builder as a paramter. Let&amp;rsquo;s see in detail, some of the inbuilt actions in JetProbe.
 Http Action In case of http action, the parameter passed is the http request builder. For building a http request, a utility class known as Http is used.</description>
     </item>
     
     <item>
       <title>Test Document</title>
-      <link>https://www.jetprobe.com/docs/test-doc/</link>
+      <link>http://b8f49eba.ngrok.io/docs/test-doc/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://www.jetprobe.com/docs/test-doc/</guid>
+      <guid>http://b8f49eba.ngrok.io/docs/test-doc/</guid>
       <description> A sample documentation page </description>
     </item>
     
     <item>
       <title>Writing validations</title>
-      <link>https://www.jetprobe.com/docs/writing-validations/</link>
+      <link>http://b8f49eba.ngrok.io/docs/writing-validations/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://www.jetprobe.com/docs/writing-validations/</guid>
+      <guid>http://b8f49eba.ngrok.io/docs/writing-validations/</guid>
       <description>Scenario Definition Validations are special actions, designated to validate the state of an infrastructure component.
 HDFS Validations In the previous section we saw how to execute actions on HDFS without verbosity existing in the respective Java APIs. In this section we will how to write validations for the HDFS Storage.
 validateWith(hdfsConf){ hdfs =&amp;gt; //Fetch the property that needs to be validated val fileStatus = hdfs.usingFS(fs =&amp;gt; fs.getFileStatus(new Path(&amp;quot;/user/hdfs/data.in&amp;quot;))) //Use the given function as the behavior driven test constructor given(fileStatus) { status =&amp;gt; assertEquals(10285689L,status.</description>
@@ -66,20 +66,20 @@ validateWith(hdfsConf){ hdfs =&amp;gt; //Fetch the property that needs to be val
     
     <item>
       <title>Roadmap</title>
-      <link>https://www.jetprobe.com/docs/roadmap/</link>
+      <link>http://b8f49eba.ngrok.io/docs/roadmap/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://www.jetprobe.com/docs/roadmap/</guid>
+      <guid>http://b8f49eba.ngrok.io/docs/roadmap/</guid>
       <description>Stream validation Currently JetProbe supports only validation of component properties. This feature would enable the developers to test the incoming/outgoing streaming stored in RabbitMQ and Kafka.
 Spark Connector Spark connector would enable the user to validate the Spark Job configuration and the status at any point of time. It can validate the cluster resources being used by the job, the job status, the applicaton name and other job specific configurations.</description>
     </item>
     
     <item>
       <title>License</title>
-      <link>https://www.jetprobe.com/docs/license/</link>
+      <link>http://b8f49eba.ngrok.io/docs/license/</link>
       <pubDate>Wed, 09 Mar 2016 20:10:46 +0100</pubDate>
       
-      <guid>https://www.jetprobe.com/docs/license/</guid>
+      <guid>http://b8f49eba.ngrok.io/docs/license/</guid>
       <description>This software is licensed under the Apache 2 license, quoted below.
 Copyright 2017 Shad Amez [shad.amezng@gmail.com]
 Licensed under the Apache License, Version 2.0 (the &amp;ldquo;License&amp;rdquo;); you may not use this file except in compliance with the License. You may obtain a copy of the License at
