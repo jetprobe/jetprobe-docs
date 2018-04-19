@@ -4,6 +4,23 @@ html {
   -webkit-box-sizing: border-box
 }
 
+.dark-bg{
+  background: #241c4d;
+background: -webkit-linear-gradient(to right, #181949, #241c4d);
+background: linear-gradient(to right, #181949, #241c4d);
+}
+b,strong{
+  font-weight: 600;
+}
+@font-face {
+    font-family: brandFont;
+    src: url(../fonts/Bold/aleo-bold-webfont.woff);
+}
+
+.brand-logo{
+  font-family: brandFont;
+}
+
 *, :after, :before {
   box-sizing: inherit;
   -moz-box-sizing: inherit;
@@ -72,14 +89,17 @@ a, button, input, label {
 h1, h2, h3, h4, h5, h6 {
   font-weight: inherit
 }
-
+h5 {
+  margin-bottom: 10px;
+}
+/*
 pre {
   background: rgba(0, 0, 0, .05)
 }
 
 pre, pre code {
   color: rgba(0, 0, 0, .87)
-}
+}*/
 
 .c, .c1, .cm, .o {
   color: rgba(0, 0, 0, .54)
@@ -653,7 +673,9 @@ body, input {
 }
 
 .drawer .toc li a {
-  font-weight: 700
+  font-weight: 700;
+  font-size: 14px;
+
 }
 
 .drawer .toc li.anchor a {
@@ -682,6 +704,27 @@ pre span {
   -webkit-transition: color .25s;
   transition: color .25s
 }
+p.text-darken-2{
+  font-size: 20px;
+}
+.bg-img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient( rgba(1, 20, 76, 0.81), rgba(111, 33, 94, 0.9) ), url(../images/1.PNG);
+background-size: cover;
+}
+/*
+.bg-img:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
+  opacity: .6;
+}
+*/
 
 .ios.standalone .article {
   background: -webkit-linear-gradient(top, #fff 50%, #e84e40 0);
@@ -692,14 +735,17 @@ pre span {
   background: -webkit-linear-gradient(top, #fff 50%, #fff 0);
   background: linear-gradient(180deg, #fff 50%, #fff 0)
 }
-
+.nav-white{
+  background-color: #fff;
+  box-shadow: 0 1px 10px 0 rgba(0,0,0,.06);
+}
 .article a, .article h1, .article h2 {
   color: #e84e40
 }
-
+/*
 .article code {
   background: #e2e2e2
-}
+}*/
 
 .article kbd {
   color: #555;
@@ -884,7 +930,8 @@ h1 .article .headerlink {
 
 .article p>code {
   white-space: nowrap;
-  padding: 2px 4px
+  padding: 2px 4px;
+  background-color: #d7e2ef;
 }
 
 .article kbd {
@@ -1382,8 +1429,8 @@ h1 .article .headerlink {
     margin: 0 24px
   }
   .article h2 {
-    padding-top: 100px;
-    margin-top: -64px
+    padding-top: 50px;
+    margin-top: -32px
   }
   .ios.standalone .article h2 {
     padding-top: 28px;
@@ -1399,7 +1446,7 @@ h1 .article .headerlink {
   }
   .article pre {
     padding: 1.5em 24px;
-    margin: 1.5em -24px 0
+    margin: 0.5em -24px 0
   }
   .footer {
     padding: 0 8px

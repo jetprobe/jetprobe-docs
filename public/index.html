@@ -1,262 +1,103 @@
 <!DOCTYPE html>
-  
-  
-  
-  
-   <html class="no-js"> 
-
-  <head lang="en-us">
+<html>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <title>Jetprobe</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>JetProbe</title>
     <meta name="generator" content="Hugo 0.29" />
 
     
-    <meta name="description" content="A material design theme for documentations.">
+    <meta name="description" content="JetProbe documentation">
     
-    <link rel="canonical" href="https://example.org/">
+    <link rel="canonical" href="https://www.jetprobe.com/">
     
-    <meta name="author" content="Digitalcraftsman">
+    <meta name="author" content="Shad Amez">
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-83272953-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    <meta property="og:url" content="https://example.org/">
-    <meta property="og:title" content="JetProbe">
-    <meta property="og:image" content="https://example.org/images/logo.png">
-    <meta name="apple-mobile-web-app-title" content="JetProbe">
+      gtag('config', 'UA-83272953-2');
+    </script>
+    <meta name="google-site-verification" content="aRtG7rX84_9R66WWteI6clburVOaC7jR7Oug1zi2A4U" />
+    <meta property="og:url" content="https://www.jetprobe.com/">
+    <meta property="og:title" content="Jet Probe">
+    <meta property="og:image" content="https://www.jetprobe.com/images/fav.ico">
+    <meta name="apple-mobile-web-app-title" content="Jet Probe">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link href="https://example.org/stylesheets/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link rel="shortcut icon" type="image/x-icon" href="https://example.org/images/favicon.ico">
-    <link rel="icon" type="image/x-icon" href="https://example.org/images/favicon.ico">
-
-    <style>
-      @font-face {
-        font-family: 'Icon';
-        src: url('https://example.org/fonts/icon.eot');
-        src: url('https://example.org/fonts/icon.eot')
-               format('embedded-opentype'),
-             url('https://example.org/fonts/icon.woff')
-               format('woff'),
-             url('https://example.org/fonts/icon.ttf')
-               format('truetype'),
-             url('https://example.org/fonts/icon.svg')
-               format('svg');
-        font-weight: normal;
-        font-style: normal;
-      }
-    </style>
-
-    <link rel="stylesheet" href="https://example.org/stylesheets/application.css">
-    <link rel="stylesheet" href="https://example.org/stylesheets/temporary.css">
-    <link rel="stylesheet" href="https://example.org/stylesheets/palettes.css">
-
-    <link href="https://example.org/stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link rel="stylesheet" href="https://example.org/stylesheets/highlight/highlight.css">
-
-    
-    
-    
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
-    <style>
-      body, input {
-        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-      }
-      pre, code {
-        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
-      }
-    </style>
-
-    
-    <script src="https://example.org/javascripts/modernizr.js"></script>
-
-    
-    <link href="https://example.org/index.xml" rel="alternate" type="application/rss+xml" title="JetProbe" />
-    <link href="https://example.org/index.xml" rel="feed" type="application/rss+xml" title="JetProbe" />
-    
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.jetprobe.com/images/new/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://www.jetprobe.com/images/new/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Gugi|Roboto:400,500,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://www.jetprobe.com/stylesheets/stylesheet.css">
   </head>
-  <body class="palette-primary-white palette-accent-teal homePage">
+  <body>
 
-
-<div class="navbar-fixed">
-  <nav class="white" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="https://example.org/" class="brand-logo black-text">JetProbe</a>
-    <ul class="right hide-on-med-and-down">
-      <li><a class="grey-text text-darken-2" href="https://example.org/docs/getting-started">Docs</a></li>
-      <li><a class="grey-text text-darken-2" href="#">Github</a></li>
-    </ul>
-
-    <ul id="nav-mobile" class="side-nav">
-      <li class="grey-text text-darken-4" style="text-align: center;padding-top:20px; font-size:18px;">JetProbe</li>
-      <li><a href="#">Intro</a></li>
-      <li><a href="#">Guides</a></li>
-      <li><a href="#">Docs</a></li>
-    </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
-  </div>
-
-  </nav>
-</div>
-
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container main">
-      <br><br>
-      <h1 class="center black-text">JetProbe</h1>
-      <div class="row center">
-        <h5 class="col s12 light">A jet speed way to lorem ipsum dolor sit amet</h5>
-      </div>
-      <div class="row center">
-        <a href="https://example.org/docs/getting-started/" id="getStarted-button" class="btn-large waves-effect waves-light light-blue lighten-2">Get Started</a>
-        <a href="" id="download-button" class="btn-large waves-effect waves-light white grey-text text-darken-2">Download</a>
-      </div>
-      <br><br>
-
-    </div>
-  </div>
-
-<div class="section light-blue lighten-1">
-  <div class="container">
-    <div class="section">
-
+<div class="main blue-grey-text text-darken-4">
+  <nav class="navbar-fixed black-text" role="navigation">
+    <div class="nav-wrapper black-text">
+      <a href="#" class="nav-logo brand-logo blue-grey-text text-darken-4">
+        Jetprobe
+      </a>
       
-      <div class="row">
-        <div class="col m12 l4">
-          <div class="icon-block white-text">
-            <h2 class="center"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="blue-grey-text text-darken-4" href="https://www.jetprobe.com/docs/introduction"><b>Documentation</b></a></li>
+        <li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe"><b>Github</b></a></li>
+      </ul>
 
-            <p class="white-text light ">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
+    </div>
+  </nav>
+  <ul id="nav-mobile" class="side-nav">
+    <li><a class="blue-grey-text text-darken-4" href="https://www.jetprobe.com/docs/introduction">Documentation</a></li>
+    <li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe">Github</a></li>
+  </ul>
 
-        <div class="col m12 l4">
-          <div class="icon-block white-text">
-            <h2 class="center"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col m12 l4">
-          <div class="icon-block white-text">
-            <h2 class="center"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
+  <div class="landing valign-wrapper">
+    <div class="landing-hero row container">
+      <div class="landing-content col s12 l6 center">
+        <div class="landing-logo"><h1 class="center brand-logo">Jetprobe</h1></div>
+        <div class="landing-tagline">Define. Execute. Validate Data Pipelines.</div>
+        <div class="landing-buttons">
+          <a href="https://www.jetprobe.com/docs/getting-started/" class="btn btn-large landing-button custom-blue white-text custom-blue-border z-depth-0">Get Started</a>
+          <a href="https://github.com/jetprobe/jetprobe/releases" class="btn btn-large landing-button white custom-blue-text custom-blue-border z-depth-0">Download</a>
         </div>
       </div>
-
     </div>
-    <br><br>
   </div>
-</div>
-<div class="section">
-  <div class="container">
-    <div class="row sample-wrapper">
-      <div class="col m12 l4 code-sample sample-1 ">
-        <h4>DNS Query Interface</h4>
-        <p class="sample-1 desc">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+  <div class="feature-section center">
+    <h2 class="feature-heading">Why use Jetprobe</h2>
+    <div class="features container row center">
+      <div class="feature col s12 xl4">
+        <div class="fimg-1 feature-image"></div>
+        <div class="feature-title"><h3>Faster Development</h3></div>
+        <div class="feature-text">Speed up the development of automation tests, with expressive and concise workflow definition language developed in Scala.</div>
       </div>
-      <div class="col m12 l8 white-text code-wrapper">
-
-          <code>
-          <div class="terminal-content black">
-            <span><span class="">admin@hashicorp.com:</span> dig web-frontend.service.consul. ANY</span>
-            <span>; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; web-frontend.service.consul. ANY</span>
-            <span>;; global options: +cmd</span>
-            <span>&nbsp;</span>
-            <span>;; Got answer:</span>
-            <span>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 29981</span>
-            <span>;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0</span>
-            <span> </span>
-            <span>;; QUESTION SECTION:</span>
-            <span>;web-frontend.service.consul. IN ANY</span>
-            <span>&nbsp;</span>
-            <span>;; ANSWER SECTION:</span>
-            <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.3.83</span></span>
-            <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.1.109</span></span>
-            <span><span class="text-pink">admin@hashicorp.com:</span> dig web-frontend.service.consul. ANY</span>
-            <span>; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; web-frontend.service.consul. ANY</span>
-            <span>;; global options: +cmd</span>
-            <span>&nbsp;</span>
-            <span>;; Got answer:</span>
-            <span>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 29981</span>
-            <span>;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0</span>
-            <span> </span>
-            <span>;; QUESTION SECTION:</span>
-            <span>;web-frontend.service.consul. IN ANY</span>
-            <span>&nbsp;</span>
-            <span>;; ANSWER SECTION:</span>
-            <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.3.83</span></span>
-            <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.1.109</span></span>
-          </div>
-          </code>
-    </div>
-  </div>
-
-  <div class="row sample-wrapper">
-    <div class="col m12 l8 white-text code-wrapper">
-
-        <code>
-        <div class="terminal-content black">
-          <span><span class="">admin@hashicorp.com:</span> dig web-frontend.service.consul. ANY</span>
-          <span>; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; web-frontend.service.consul. ANY</span>
-          <span>;; global options: +cmd</span>
-          <span>&nbsp;</span>
-          <span>;; Got answer:</span>
-          <span>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 29981</span>
-          <span>;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0</span>
-          <span> </span>
-          <span>;; QUESTION SECTION:</span>
-          <span>;web-frontend.service.consul. IN ANY</span>
-          <span>&nbsp;</span>
-          <span>;; ANSWER SECTION:</span>
-          <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.3.83</span></span>
-          <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.1.109</span></span>
-          <span><span class="text-pink">admin@hashicorp.com:</span> dig web-frontend.service.consul. ANY</span>
-          <span>; &lt;&lt;&gt;&gt; DiG 9.8.3-P1 &lt;&lt;&gt;&gt; web-frontend.service.consul. ANY</span>
-          <span>;; global options: +cmd</span>
-          <span>&nbsp;</span>
-          <span>;; Got answer:</span>
-          <span>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 29981</span>
-          <span>;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0</span>
-          <span> </span>
-          <span>;; QUESTION SECTION:</span>
-          <span>;web-frontend.service.consul. IN ANY</span>
-          <span>&nbsp;</span>
-          <span>;; ANSWER SECTION:</span>
-          <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.3.83</span></span>
-          <span>web-frontend.service.consul. 0 IN  A <span class="text-pink">10.0.1.109</span></span>
-        </div>
-        </code>
-  </div>
-  <div class="col m12 l4 code-sample sample-2 ">
-    <h4>DNS Query Interface</h4>
-    <p class="sample-1 desc">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-  </div>
-</div>
-
-
-</div>
-
-</div>
-  <footer class="page-footer white black-text">
-
-    <div class="footer-copyright white">
-      <div class="container">
-      <span class="grey-text text-darken-2">Copyright &copy <a class="light-blue-text" href="">2017 Shadops</a></span>
+      <div class="feature col s12 xl4">
+        <div class="fimg-2 feature-image"></div>
+        <div class="feature-title"><h3>Multiple Integrations</h3></div>
+        <div class="feature-text">Write validation rules, against different big data infrastructure components like HBase, HDFS and MongoDB.</div>
+      </div>
+      <div class="feature col s12 xl4">
+        <div class="fimg-3 feature-image"></div>
+        <div class="feature-title"><h3>Easily Extensible</h3></div>
+        <div class="feature-text">Add custom tasks and validation rules for your favorite tools, using pluggable APIs of Jetprobe framework.</div>
       </div>
     </div>
-  </footer>
+  </div>
+</div>
 
+<div class="hero-image hide-on-med-and-down"></div>
 
-  
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
+</body>
 
-  </body>
 </html>

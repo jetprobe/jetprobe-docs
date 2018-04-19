@@ -9,11 +9,12 @@
 }
 
 .palette-primary-white .drawer .toc a.current, .palette-primary-white .drawer .toc a:focus, .palette-primary-white .drawer .toc a:hover {
-  color: #e84e40
+  color: #2c9bd2;
+  font-size : 14px;
 }
 
 .palette-primary-white .drawer .anchor a {
-  border-left: 2px solid #e84e40
+  border-left: 2px solid #2c9bd2
 }
 
 .ios.standalone .palette-primary-white .article {
@@ -21,8 +22,18 @@
   background: linear-gradient(180deg, #fff 50%, #e84e40 0)
 }
 
-.palette-primary-white .article a, .palette-primary-white .article code, .palette-primary-white .article h1, .palette-primary-white .article h2 {
+.palette-primary-white .article h1, .palette-primary-white .article h2 {
   color: #3e3837
+}
+
+.palette-primary-white .article a {
+  color : #002451;
+  font-weight: 600;
+}
+
+.palette-primary-white .article a:hover {
+  color : #2a77a2;
+  font-weight: 600;
 }
 
 .palette-primary-white .article .headerlink {
@@ -838,10 +849,10 @@
 .palette-accent-cyan .repo a {
   background: #00b8d4
 }
-
+/*
 .palette-accent-teal .article a:focus, .palette-accent-teal .article a:hover {
   color: #00bfa5
-}
+}*/
 
 .palette-accent-teal .repo a {
   background: #00bfa5

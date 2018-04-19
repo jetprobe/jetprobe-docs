@@ -1,18 +1,31 @@
 {{ partial "new-head" . }}
 <div class="main blue-grey-text text-darken-4">
-  <nav class="navbar-fixed black-text">
+  <nav class="navbar-fixed black-text" role="navigation">
     <div class="nav-wrapper black-text">
-      <img class="brand-logo-image" src="/images/new/logo.png"></img>
-      <a href="#" class="brand-logo blue-grey-text text-darken-4">Jetprobe</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
+
+      <a href="#" class="nav-logo brand-logo blue-grey-text text-darken-4">
+        Jetprobe
+      </a>
+      <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a class="blue-grey-text text-darken-4" href="/docs/introduction">Documentation</a></li>
         <li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe">Github</a></li>
+      </ul> -->
+      <ul class="right hide-on-med-and-down">
+        <li><a class="blue-grey-text text-darken-4" href="https://www.jetprobe.com/docs/introduction"><b>Documentation</b></a></li>
+        <li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe"><b>Github</b></a></li>
       </ul>
+
     </div>
   </nav>
+  <ul id="nav-mobile" class="side-nav">
+    <li><a class="blue-grey-text text-darken-4" href="https://www.jetprobe.com/docs/introduction">Documentation</a></li>
+    <li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe">Github</a></li>
+  </ul>
+
   <div class="landing valign-wrapper">
     <div class="landing-hero row container">
-      <div class="landing-content col s6 center">
+      <div class="landing-content col s12 l6 center">
         <div class="landing-logo"><h1 class="center brand-logo">Jetprobe</h1></div>
         <div class="landing-tagline">Define. Execute. Validate Data Pipelines.</div>
         <div class="landing-buttons">
@@ -23,32 +36,34 @@
     </div>
   </div>
   <div class="feature-section center">
-    <h2 class="why">Why use Jetprobe</h2>
+    <h2 class="feature-heading">Why use Jetprobe</h2>
     <div class="features container row center">
-      <div class="feature col s4">
-        <div class="feature-image fimg-1">
-        </div>
-        <div class="feature-name"><h3>Faster Development</h3></div>
+      <div class="feature-item col s12 xl4">
+        <div class="fimg-1 feature-image"></div>
+        <div class="feature-title"><h3>Faster Development</h3></div>
         <div class="feature-text">Speed up the development of automation tests, with expressive and concise workflow definition language developed in Scala.</div>
       </div>
-      <div class="feature col s4">
-        <div class="feature-image fimg-2">
-        </div>
-        <div class="feature-name"><h3>Multiple Integrations</h3></div>
+      <div class="feature-item col s12 xl4">
+        <div class="fimg-2 feature-image"></div>
+        <div class="feature-title"><h3>Multiple Integrations</h3></div>
         <div class="feature-text">Write validation rules, against different big data infrastructure components like HBase, HDFS and MongoDB.</div>
       </div>
-      <div class="feature col s4">
-        <div class="feature-image fimg-3">
-        </div>
-        <div class="feature-name"><h3>Easily Extensible</h3></div>
+      <div class="feature-item col s12 xl4">
+        <div class="fimg-3 feature-image"></div>
+        <div class="feature-title"><h3>Easily Extensible</h3></div>
         <div class="feature-text">Add custom tasks and validation rules for your favorite tools, using pluggable APIs of Jetprobe framework.</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="hero-image"></div>
+<div class="hero-image hide-on-med-and-down"></div>
 <!-- {{ partial "footer" . }} {{ partial "footer_js" . }} -->
+<script>
+$( document ).ready(function(){
+  $(".button-collapse").sideNav();
+});
+</script>
 </body>
 
 </html>

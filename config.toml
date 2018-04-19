@@ -18,7 +18,7 @@ googleAnalytics = "UA-83272953-2"
 
 	version = "1.0.0"
 	logo = "images/fav.ico"
-	favicon = "images/fav.ico"
+	favicon = "images/new/favicon.ico"
 
 	permalink = "#"
 

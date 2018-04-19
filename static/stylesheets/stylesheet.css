@@ -35,15 +35,25 @@ nav {
   margin: 0 auto;
 }
 
-.brand-logo-image {
-  height: 32px;
-  margin-top: 18px;
-  margin-right: 20px;
-}
+  .nav-logo:before {
+    /* content: url(/images/new/logo.png); */
+    /* color: rgba(255, 255, 255, 0); */
+    /* background: url(/images/new/logo.png) center center no-repeat; */
+    display: inline-flex;
+    width: 10px;
+    background-image: url('/images/new/logo.png');
+    background-size: 27px 26px;
+    width: 27px;
+    height: 26px;
+    padding-left: 27px;
+    margin-left: 5px;
+    content:"";
 
-.brand-logo {
-  font-family: "Gugi", cursive;
-}
+  }
+
+  .nav-logo {
+    font-family: "Gugi", cursive;
+  }
 
 .landing {
   margin: 0;
@@ -73,44 +83,49 @@ nav {
 }
 
 .features {
-  width: 80%;
+  /* width: 80%; */
 }
 
-.why {
-  font-size: 24px;
-  font-weight: 500;
-  margin: 50px 0;
-}
-
-.feature-image {
-  text-align: center;
-  width: 417px;
-  height: 313px;
-  margin-bottom: 50px;
-  background-size: contain;
-}
-
-  .fimg-1 {
-    background: url(/images/new/feature1.png) bottom center no-repeat;
+  .feature-item {
+    margin-bottom: 50px;
   }
 
-  .fimg-2 {
-    background: url(/images/new/feature2.png) bottom center no-repeat;
+  .feature-heading {
+    font-size: 32px;
+    font-weight: 500;
+    margin: 50px 0;
   }
 
-  .fimg-3 {
-    background: url(/images/new/feature3.png) bottom center no-repeat;
+  .feature-image {
+    text-align: center;
+    height: 313px;
+    max-width: 100%;
+    margin-bottom: 50px;
   }
 
-.feature-name h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 25px;
-}
+    .fimg-1 {
+      background: url(/images/new/feature1.png) bottom center no-repeat;
+    }
 
-.feature-text {
-  font-size: 16px;
-}
+    .fimg-2 {
+      background: url(/images/new/feature2.png) bottom center no-repeat;
+    }
+
+    .fimg-3 {
+      background: url(/images/new/feature3.png) bottom center no-repeat;
+    }
+
+  .feature-title h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+
+  .feature-text {
+    font-size: 16px;
+
+    color: #5A6171;
+  }
 
 .hero-image {
   position: absolute;
@@ -121,4 +136,16 @@ nav {
   width: 50vw;
   background: url(/images/new/hero-image.png) center right no-repeat;
   background-size: contain;
+}
+
+@media only screen and (max-width: 1600px) {
+  .features {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .nav-wrapper {
+    width: 100%;
+  }
 }

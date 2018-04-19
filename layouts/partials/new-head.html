@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Jetprobe</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>{{ .Title }}{{ if not .IsHome }} - {{ .Site.Title }}{{ end }}</title>
     {{ .Hugo.Generator }}
@@ -30,12 +30,15 @@
     {{ with .Site.Title }}<meta name="apple-mobile-web-app-title" content="{{ . }}">{{ end }}
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ with .Site.Params.favicon }}{{ . | absURL }}{{ else }}{{ "images/fav.ico" | absURL }}{{ end }}">
     <link rel="icon" type="image/x-icon" href="{{ with .Site.Params.favicon }}{{ . | absURL }}{{ else }}{{ "images/fav.ico" | absURL }}{{ end }}">
     <link href="https://fonts.googleapis.com/css?family=Gugi|Roboto:400,500,700" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="{{ "stylesheets/stylesheet.css" | absURL }}">
+    <!-- <link rel="stylesheet" href="{{ "stylesheets/stylesheet.css" | absURL }}"> -->
+    <link rel="stylesheet" href="/stylesheets/stylesheet.css">
   </head>
   <body>
