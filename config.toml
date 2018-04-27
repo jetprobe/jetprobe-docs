@@ -56,8 +56,8 @@ googleAnalytics = "UA-83272953-2"
 	weight = 20
 
 [[menu.main]]
-	name   = "Actions"
-	url    = "/docs/actions/"
+	name   = "Tasks"
+	url    = "/docs/tasks/"
 	parent = "docsMenu"
 	weight = 30
 

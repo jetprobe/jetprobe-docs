@@ -1,14 +1,14 @@
 ---
-title: Actions
+title: Tasks
 weight: 20
 ---
 
-## Declaring Actions
+## Declaring Tasks
 
-An action in the context of a data pipeline is a stage or a phase that is part of the entire execution. Every action is separated by a dot (.) and takes an action builder
-as a paramter. Let's see in detail, some of the inbuilt actions in JetProbe.
+An task in the context of a data pipeline is a stage or a phase that is part of the entire execution. Every task is executed sequentially and takes an task builder
+as a paramter. Let's see in detail, some of the inbuilt tasks in Jetprobe.
 
-## Http Action
+## Http Tasks
 
 In case of http action, the parameter passed is the http request builder. For building a http request, a utility class known as `Http` is used. Here's a sample http request :
 
@@ -27,7 +27,7 @@ val postRequest = Http("create-a-user")
     )
 ```
 
-Here `${server.hostname}` is a variable that can be interpolated based on the config passed during the execution of the test.
+Here `${server.hostname}` is a variable that can be interpolated based on the config passed during the execution of the test pipeline.
 
 Once you have defined the request, then you can use http(...) helper method to include the above request as a part of the data pipline test.
 
@@ -65,7 +65,7 @@ val getUser =  Http("get-user-details")
 
 Here `${user.id}` would be replaced by the value extracted by the json expression.
 
-## Pause Action
+## Pause Task
 
 A pause action, would simply pause the data pipeline, to allow the processing of data, after which the developer can execute the validations or some other set of actions.
 The pause action takes a duration as an parameter.
@@ -75,7 +75,7 @@ The pause action takes a duration as an parameter.
 pause(4.seconds)
 ```
 
-## SSH Action
+## SSH Task
 
 A ssh action allows the developers to execute a remote command by providing the credentials for remote connections.
 
@@ -85,15 +85,15 @@ A ssh action allows the developers to execute a remote command by providing the 
 //First define the ssh config
 val sshConfig = SSHConfig(user = "admin", password = "secret", hostName = "xx.xx.xx.xx")
 
-ssh(sshConfig) { client =>
+ssh(description = "some random commands ",sshConfig) { client =>
   client.run("cd /home/me/apps && mkdir temp && ls")
 }
 
 ```
 
-## Custom Action
+## Custom Tasks
 
-A custom action for a target storage can be executed by defining the configuration required to connect to the storage system, and
+A custom task for a target storage can be executed by defining the configuration required to connect to the storage system, and
 then leverage the underlying APIs exposed by the Storage system.
 
 **File Based Action**
@@ -101,7 +101,7 @@ then leverage the underlying APIs exposed by the Storage system.
 val fs = new FilePath("/path/to/file.in")
 
 //custom action with file
-doWith(fs) { file =>
+task(description = "read the file",fs) { file =>
 
       //read the file
       file.lines().foreach(println)
@@ -116,7 +116,7 @@ doWith(fs) { file =>
       file.usingFile[T](fn : File => T) : T
     }
 ```
-In the above example, the `doWith` function takes a configuration pertaining to a storage system, and takes another callback function to execute file based commands.
+In the above example, the `task` function takes the description and configuration pertaining to a storage system, and takes another callback function to execute file based commands.
 
 Here's another example for HDFS
 
@@ -124,7 +124,7 @@ Here's another example for HDFS
 ```scala
 val hdfsConf = new HDFSConfig("hdfs://<namenode-host>","loginUser")
 
-doWith(hdfsConf){ hadoop =>
+task(description = "Copy from hdfs",hdfsConf){ hadoop =>
 
         //Copy to hdfs
         hadoop.copyFromLocal(localSrc= "/local/file", destination = "/user/hdfs/path")
@@ -136,9 +136,9 @@ doWith(hdfsConf){ hadoop =>
 
 ```
 
-## Validation action
+## Validation task
 
-Validation actions take the `storage configuration`, as a parameter which is nothing but the target that needs to be validated, and also the collection of validation rules that needs
+Validation task take the `storage configuration`, as a parameter which is nothing but the target that needs to be validated, and also the collection of validation rules that needs
 to be executed for that particular sink.
 
-A storage could be a database, a file, a messaging infrastructure or any http service. In the next section, we would see how to write validations for a given storge.
+A storage could be a database, a file, a messaging infrastructure or any http service. In the next section, we would see how to write validations for a given storage.

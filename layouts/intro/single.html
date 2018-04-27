@@ -1,4 +1,4 @@
-{{ partial "head" . }}
+{{ partial "new-head" . }}
 
 {{ if (eq (trim .Site.Params.provider " " | lower) "github") | and (isset .Site.Params "repo_url") }}
 	{{ $repo_id := replace .Site.Params.repo_url "https://github.com/" ""}}
@@ -22,7 +22,7 @@
 
 			{{ .Content }}
 
-			
+
 
 
 		</div>

@@ -13,7 +13,7 @@ Validations are special actions, designated to validate the state of an infrastr
 In the previous section we saw how to execute actions on HDFS without verbosity existing in the respective Java APIs. In this section we will how to write validations for the HDFS Storage.
 
 ```scala
-validateWith(hdfsConf){ hdfs =>
+validate(description = "Check file status ",hdfsConf){ hdfs =>
 
       //Fetch the property that needs to be validated
       val fileStatus = hdfs.usingFS(fs => fs.getFileStatus(new Path("/user/hdfs/data.in")))
@@ -24,9 +24,9 @@ validateWith(hdfsConf){ hdfs =>
       }
     }
 ```
-Every `validateWith` function, acts as validation action builder, which takes the Storage configuration as a parameter and expects a function that would build a validation rule with the returned Storage instance.
+Every `validate` function, acts as validation task builder, which takes the Storage configuration as a parameter and expects a function that would build a validation rule with the returned Storage instance.
 ```scala
-def validateWith[S <: Storage](config: Config[S])(fnRuleBuilder : S => ValidationRule[S])
+def validate[S <: Storage](config: Config[S])(fnRuleBuilder : S => ValidationRule[S])
 ```
 
 **RabbitMQ Validations**
@@ -34,7 +34,7 @@ def validateWith[S <: Storage](config: Config[S])(fnRuleBuilder : S => Validatio
 //create the RabbitMQ instance that needs to be validated. The host here ${rabbit.host} would be resolved at the runtime.
 val rabbit = new RabbitMQConfig("${rabbit.host}")
 
-validateWith(rabbitConf) { rabbit =>
+validate(description = "Check rabbitmq exchanges", rabbitConf) { rabbit =>
 
       val listofExchanges = rabbit.usingAdmin(admin => admin.getExchanges)
 
@@ -61,7 +61,7 @@ given the state of the component as a POJO/case class(approx).
 // Declare the instance of MongoDB Sink that needs to be validated
  val mongo = new MongoDBConf("mongodb://${mongo.host}/")
 
- validateWith(mongoConf){ mongo =>
+ validate(description = "check database stats",mongoConf){ mongo =>
 
       given(mongo.getDatabaseStats("zoo")){ dbStats =>
 
@@ -102,28 +102,18 @@ Let's assume that the response is as below.
 Now for such json response, we can express the validation as below.
 
 ```scala
-.validate[HttpRequestBuilder](getPosts) {
+validateGiven("Testing a negative case",getPosts) { res =>
 
-  //validate the response status code
-   val responseValiation = Seq(
-     checkHttpResponse(202, _.status)
-   )
-   //validate the comments count
-    val commentsCount = given(jsonQuery = "$.commentsCount")(
-      checkExtractedValue(true, x => x == 400)
-    )
+     given[String]("$.data.first_name") { resp =>
+       assertEquals("Janet2",resp)
 
-    val contentValidation = given(jsonQuery = "$.comments[0].author")(
-      checkExtractedValue(true, _ == "Dan")
-    )
-      responseValiation ++ commentsCount ++ contentValidation
-  }
+     }
+   }
 ```
 
-## Execution of Scenario
+## Execution of Pipelines
 
-Once the scenario is defined, the validation rules expressed would get executed by the Jetprobe library and at the end the results would be available both in the console and
-the HTML file.
+A typical scenario would consist of collection of pipelines, which would get executed by the Jetprobe runtime library and at the end the results would be available both in the console and the HTML file.
 
 Follow the steps to run the scenario :
 
@@ -131,14 +121,30 @@ Follow the steps to run the scenario :
 * Create a yaml configuration file say `config.yml` that would contain the properties that are being defined in the scenario definition.
 
 ```yml
-//Example config
-rabbit.host : 10.25.3.56
-http.host : api.myserver.com
+//Name of the Scenario
+name : data ingestion test
+project : user-analytics
+
+tags :
+  - https
+  - mongo
+  - test
+
+# params for the pipelines
+params :
+  mongo.host.name : xx.xx.xxx.xxx
+  reporter.html.outputPath : /path/to/report.html
+
+pipelines :
+  - name : Mongo-prep
+    className : com.jetprobe.sample.MongoSuite
+    description : Mongo db preparation
+    exitOnFailure : true
 ```
 and save it at say `/data/path/config.yml`. Use the jar to run the validations as below.
 
   ```sh
-  $ jetprobe --testjar /path/to/validations.jar --config /data/path/config.yml --reportPath /export/path/for/report.html
+  $ jetprobe --jar /path/to/job.jar --config /data/path/config.yml
   ```
 
 For more examples, head over to the [example project](https://github.com/jetprobe/jetprobe/tree/master/jetprobe-sample/src/main/scala/com/jetprobe/sample)

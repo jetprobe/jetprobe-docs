@@ -1,22 +1,42 @@
-{{ partial "head" . }}
+{{ partial "new-head" . }}
 
 {{ if (eq (trim .Site.Params.provider " " | lower) "github") | and (isset .Site.Params "repo_url") }}
 	{{ $repo_id := replace .Site.Params.repo_url "https://github.com/" ""}}
 	{{ .Scratch.Set "repo_id" $repo_id }}
 {{ end }}
+<div class="blue-grey-text text-darken-4">
+	<nav class="navbar-fixed black-text" role="navigation">
+		<div class="nav-wrapper black-text">
+			<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons black-text">menu</i></a>
 
-<div class="navbar-fixed">
+			<a href="/" class="nav-logo brand-logo blue-grey-text text-darken-4">
+			Jetprobe
+		</a>
+			<!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><a class="blue-grey-text text-darken-4" href="/docs/introduction">Documentation</a></li>
+			<li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe">Github</a></li>
+		</ul> -->
+			<ul class="right hide-on-med-and-down">
+				<li><a class="blue-grey-text text-darken-4" href="https://www.jetprobe.com/docs/introduction"><b>Documentation</b></a></li>
+				<li><a class="blue-grey-text text-darken-4" href="https://github.com/jetprobe/jetprobe"><b>Github</b></a></li>
+			</ul>
+
+		</div>
+	</nav>
+</div>
+<!-- <div class="navbar-fixed">
 	<nav class="nav-white" role="navigation">
 		{{ partial "header" . }}
 	</nav>
-</div>
+</div> -->
 <ul id="nav-mobile" class="side-nav">
   <li><a class="grey-text text-darken-2" href="/docs/introduction">Introduction</a></li>
   <li><a class="grey-text text-darken-2" href="/docs/getting-started">Getting Started</a></li>
 	<li><a class="grey-text text-darken-2" href="/docs/roadmap">Roadmap</a></li>
 	<li><a class="grey-text text-darken-2" href="/docs/license">License</a></li>
 </ul>
-<main class="main">
+
+<main class="main-doc">
 
 	<div class="drawer">
 		{{ partial "drawer.html" (dict "page" . "menuName" "sidebar") }}
@@ -28,7 +48,7 @@
 
 			{{ .Content }}
 
-			
+
 
 		</div>
 	</article>
@@ -42,5 +62,6 @@
 		</div>
 	</div>
 </main>
+
 {{ partial "footer" .}}
 {{ partial "footer_js" . }}

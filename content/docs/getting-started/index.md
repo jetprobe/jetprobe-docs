@@ -39,9 +39,8 @@ For getting the list of supported options just type `jetprobe --help`. Here's th
 ```
 Usage: jetprobe [options]
 
-  -t, --testjar <file>     Testable jar is required
+  -j, --jar <file>     Testable jar is required
   -c, --config <config>    Test config file path
-  -r, --reportPath <path>  Report output file path
   --help                   prints this usage text
 
 ```
@@ -122,12 +121,12 @@ class HelloJetProbe extends TestScenario {
 
   val mongoConf = new MongoDBConf("mongodb://xxx.xxx.xx.xx")
 
-  override def actions: ScenarioBuilder = {
+  override def tasks: PipelineBuilder = {
 
     http(getUserInfo)
 
     //Validate the properties of Foo database
-    validateWith(mongoConf){ mongo =>
+    validate("check database",mongoConf){ mongo =>
 
       given(mongo.getDatabaseStats("foo")){ dbStats =>
         assertEquals(2,dbStats.get("indexes").get.asInt32().getValue)
@@ -140,6 +139,6 @@ class HelloJetProbe extends TestScenario {
 
 The above test once executed will just pause the test pipeline for 5 seconds and then end the test.
 Once done, create a packaged jar and use the jetprobe CLI to run the test jar as below.
-`jetprobe -testjar /path/to/packaged-test.jar`
+`jetprobe --jar /path/to/packaged-test.jar`
 
 Currently the framework supports testing of RabbitMQ, MongoDB, HDFS and HBase component properties. Head over to the next [section](../writing-validations) to know more about writing tests.

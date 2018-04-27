@@ -6,6 +6,12 @@
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
 
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+pre {
+  margin: 0;
+  padding: 0;
+  border: 0
+}
+
 
 
 .hljs-comment, .hljs-quote {

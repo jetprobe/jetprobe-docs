@@ -2,32 +2,38 @@
   background-color: #4980F9;
 }
 
-  .custom-blue:hover {
-    background-color: #185ef7;
-  }
+.custom-blue:hover {
+  background-color: #185ef7;
+}
 
 .custom-blue-text {
   color: #4980F9;
 }
 
-  .custom-blue-text:hover {
-    color: #185ef7;
-  }
+.custom-blue-text:hover {
+  color: #185ef7;
+}
 
 .custom-blue-border {
   border-color: #4980F9;
 }
 
-  .custom-blue-border:hover {
-    border-color: #185ef7;
-  }
+.custom-blue-border:hover {
+  border-color: #185ef7;
+}
+
+.brand-logo {
+  font-family: "Gugi", cursive;
+}
+
+h1.brand-logo {
+  font-size: 72px;
+}
 
 nav {
   background-color: #FFFFFF;
   position: fixed;
-  box-shadow: 0 2px 2px 0 rgba(208, 220, 250,0.14),
-              0 1px 5px 0 rgba(208, 220, 250,0.12),
-              0 3px 1px -2px rgba(208, 220, 250,0.2);
+  box-shadow: 0 2px 2px 0 rgba(208, 220, 250, 0.14), 0 1px 5px 0 rgba(208, 220, 250, 0.12), 0 3px 1px -2px rgba(208, 220, 250, 0.2);
 }
 
 .nav-wrapper {
@@ -35,25 +41,24 @@ nav {
   margin: 0 auto;
 }
 
-  .nav-logo:before {
-    /* content: url(/images/new/logo.png); */
-    /* color: rgba(255, 255, 255, 0); */
-    /* background: url(/images/new/logo.png) center center no-repeat; */
-    display: inline-flex;
-    width: 10px;
-    background-image: url('/images/new/logo.png');
-    background-size: 27px 26px;
-    width: 27px;
-    height: 26px;
-    padding-left: 27px;
-    margin-left: 5px;
-    content:"";
+.nav-logo:before {
+  /* content: url(/images/new/logo.png); */
+  /* color: rgba(255, 255, 255, 0); */
+  /* background: url(/images/new/logo.png) center center no-repeat; */
+  display: inline-flex;
+  width: 10px;
+  background-image: url('/images/new/logo.png');
+  background-size: 27px 26px;
+  width: 27px;
+  height: 26px;
+  padding-left: 27px;
+  margin-left: 5px;
+  content: "";
+}
 
-  }
-
-  .nav-logo {
-    font-family: "Gugi", cursive;
-  }
+.landing-hero {
+  margin-bottom: 150px;
+}
 
 .landing {
   margin: 0;
@@ -61,71 +66,81 @@ nav {
   background-color: #F6F7FA;
 }
 
-  .landing-logo h1 {
-    margin-bottom: 15px;
-  }
+.landing-logo h1 {
+  margin-bottom: 15px;
+}
 
-  .landing-tagline {
-    font-size: 24px;
-    margin-bottom: 25px;
-  }
+.landing-tagline {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
 
-  .landing-button {
-    background-color: #4980F9;
-    font-size: 15px;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    border: 1px solid #4980F9;
-  }
+.landing-button {
+  background-color: #4980F9;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  border: 1px solid #4980F9;
+}
+
+h5.code-feature-heading{
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top : 40px;
+}
 
 .feature-section {
   padding-bottom: 150px;
+  background: white;
+}
+
+div.light-theme{
+  background-color: #F6F7FA;
 }
 
 .features {
   /* width: 80%; */
 }
 
-  .feature-item {
-    margin-bottom: 50px;
-  }
+.feature-item {
+  margin-bottom: 50px;
+}
 
-  .feature-heading {
-    font-size: 32px;
-    font-weight: 500;
-    margin: 50px 0;
-  }
+.feature-heading {
+  font-size: 32px;
+  font-weight: 500;
+  margin: 50px 0;
+}
 
-  .feature-image {
-    text-align: center;
-    height: 313px;
-    max-width: 100%;
-    margin-bottom: 50px;
-  }
+.feature-image {
+  text-align: center;
+  height: 313px;
+  max-width: 100%;
+  margin-bottom: 50px;
+}
 
-    .fimg-1 {
-      background: url(/images/new/feature1.png) bottom center no-repeat;
-    }
+.fimg-1 {
+  background: url(/images/new/feature1.png) bottom center no-repeat;
+}
 
-    .fimg-2 {
-      background: url(/images/new/feature2.png) bottom center no-repeat;
-    }
+.fimg-2 {
+  background: url(/images/new/feature2.png) bottom center no-repeat;
+}
 
-    .fimg-3 {
-      background: url(/images/new/feature3.png) bottom center no-repeat;
-    }
+.fimg-3 {
+  background: url(/images/new/feature3.png) bottom center no-repeat;
+}
 
-  .feature-title h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 25px;
-  }
+.feature-title h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
 
-  .feature-text {
-    font-size: 16px;
-
-    color: #5A6171;
-  }
+.feature-text {
+  font-size: 16px;
+  color: #5A6171;
+}
 
 .hero-image {
   position: absolute;
@@ -148,11 +163,9 @@ nav {
   .nav-wrapper {
     width: 100%;
   }
-
   .features {
     width: 100%;
   }
-
   .feature-image {
     background-size: contain !important;
   }

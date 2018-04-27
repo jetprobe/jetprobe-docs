@@ -23,6 +23,22 @@
 
       gtag('config', 'UA-83272953-2');
     </script>
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('{{ "fonts/icon.eot?52m981" | absURL }}');
+        src: url('{{ "fonts/icon.eot?#iefix52m981" | absURL }}')
+               format('embedded-opentype'),
+             url('{{ "fonts/icon.woff?52m981" | absURL }}')
+               format('woff'),
+             url('{{ "fonts/icon.ttf?52m981" | absURL }}')
+               format('truetype'),
+             url('{{ "fonts/icon.svg?52m981#icon" | absURL }}')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
     <meta name="google-site-verification" content="aRtG7rX84_9R66WWteI6clburVOaC7jR7Oug1zi2A4U" />
     <meta property="og:url" content="{{ .Permalink }}">
     {{ with .Site.Title }}<meta property="og:title" content="{{ . }}">{{ end }}
@@ -32,13 +48,20 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="{{ "javascripts/modernizr.js" | absURL }}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="{{ with .Site.Params.favicon }}{{ . | absURL }}{{ else }}{{ "images/fav.ico" | absURL }}{{ end }}">
     <link rel="icon" type="image/x-icon" href="{{ with .Site.Params.favicon }}{{ . | absURL }}{{ else }}{{ "images/fav.ico" | absURL }}{{ end }}">
     <link href="https://fonts.googleapis.com/css?family=Gugi|Roboto:400,500,700" rel="stylesheet">
+
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <!-- <link rel="stylesheet" href="{{ "stylesheets/stylesheet.css" | absURL }}"> -->
+  <link rel="stylesheet" href="{{ "stylesheets/application.css" | absURL }}">
+    <link href="{{ "stylesheets/style.css" | absURL }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" href="{{ with .Site.Params.highlight_css }}{{ . | absURL }}{{ else }}{{ "stylesheets/highlight/highlight.css" | absURL }}{{ end }}">
+    <link rel="stylesheet" href="{{ "stylesheets/palettes.css" | absURL }}">
     <link rel="stylesheet" href="/stylesheets/stylesheet.css">
   </head>
-  <body>
+  <body class="{{ with .Site.Params.palette.primary }}palette-primary-{{ . }}{{end }} {{ with .Site.Params.palette.accent }}palette-accent-{{ .  }}{{ end }} homePage">
