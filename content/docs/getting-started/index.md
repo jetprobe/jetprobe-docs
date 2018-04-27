@@ -107,34 +107,46 @@ Once you have added the required libraries, start by creating a Scala class to d
 Currently all the tests need to be written in Scala, a language offering functional programming paradigm for JVM. Every test class unlike a Junit test must extend the TestScenario trait. A trait in Scala is similar to interfaces in Java, which consists of a single method `buildScenario`. This method needs to be overridden by the Custom test class. Here is an example of Hello Test Suite in JetProbe.
 
 ```Scala
-import com.jetprobe.core.TestScenario
-import com.jetprobe.core.annotation.TestSuite
-import com.jetprobe.core.structure.ScenarioBuilder
-import com.jetprobe.mongo.storage.MongoDBConf
+import com.jetprobe.core.TestPipeline
+import com.jetprobe.core.annotation.PipelineMeta
+import com.jetprobe.core.http.Http
+import com.jetprobe.core.http.validation.HttpValidationSupport
+import com.jetprobe.core.structure.PipelineBuilder
 
-@TestSuite("Hello Jetprobe")
-class HelloJetProbe extends TestScenario {
+/**
+  * @author Me.
+  */
+@PipelineMeta(name = "Fast Http Testing")
+class HttpTestSuite extends TestPipeline with HttpValidationSupport{
 
-  val getUserInfo = Http("Create Foo ")
-                    .post("http://api.server.com/v1/foo/1")
-                    .body("{ 'name' : 'foo'}")
-
-  val mongoConf = new MongoDBConf("mongodb://xxx.xxx.xx.xx")
+  val getPosts = Http("Sample request")
+    .get("https://reqres.in/api/users/2")
 
   override def tasks: PipelineBuilder = {
 
-    http(getUserInfo)
+      http(getPosts)
 
-    //Validate the properties of Foo database
-    validate("check database",mongoConf){ mongo =>
 
-      given(mongo.getDatabaseStats("foo")){ dbStats =>
-        assertEquals(2,dbStats.get("indexes").get.asInt32().getValue)
+      validateGiven("Testing Janet user",getPosts) { res =>
+
+        given[String]("$.data.first_name") { resp =>
+          assertEquals("Janet",resp)
+
+        }
+      }
+
+    validateGiven("Testing a failed test",getPosts) { res =>
+
+      given[String]("$.data.first_name") { resp =>
+        assertEquals("Janet2",resp)
+
       }
     }
 
   }
+
 }
+
 ```
 
 The above test once executed will just pause the test pipeline for 5 seconds and then end the test.
