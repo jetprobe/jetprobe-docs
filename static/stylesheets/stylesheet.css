@@ -75,6 +75,10 @@ nav {
   margin-bottom: 25px;
 }
 
+div.card {
+  margin-bottom: 30px;
+}
+
 .landing-button {
   background-color: #4980F9;
   font-size: 15px;
@@ -83,10 +87,11 @@ nav {
   border: 1px solid #4980F9;
 }
 
-h5.code-feature-heading{
+h5.code-feature-heading {
   font-weight: bold;
-  margin-bottom: 20px;
-  margin-top : 40px;
+  margin-top: 10px;
+  color: #002451;
+  font-size: 24px;
 }
 
 .feature-section {
@@ -94,7 +99,7 @@ h5.code-feature-heading{
   background: white;
 }
 
-div.light-theme{
+div.light-theme {
   background-color: #F6F7FA;
 }
 

@@ -64,16 +64,10 @@
         <div class="row">
           <div class="col m12 l12">
               <h2 class="feature-heading center">How it works</h4>
-
-                <div class="cd-text">
-                  <h5 class="code-feature-heading">Define the Test Pipeline</h5>
-                  <div class="feature-text">
-                    Leverage the expressive API to define the sequence of tasks that would be part
-                    of the test pipeline.
-                  </div>
-                </div>
-
                 <div class="card white ">
+                  <div class="cd-text card-action">
+                    <h5 class="code-feature-heading">Define the Test Pipeline</h5>
+                  </div>
                   <div class="code-card grey-text text-darken-3">
                     <pre><code class="scala">
 @PipelineMeta(name = "MongoDB Prep Suite")
@@ -111,36 +105,31 @@ val mongoConf = new MongoDBConf("mongodb://${mongo.host.name}")
                     </div>
                 </div>
 
-
-                <div class="cd-text">
-                  <h5 class="code-feature-heading">Define the workflow</h5>
-                  <div class="feature-text">
-                    The next step is to define the workflow that could consist of multiple pipeline that
-                      needs to be executed as part of the test scenario.
-                  </div>
-                </div>
-
                 <div class="card white ">
+                  <div class="cd-text card-action">
+                    <h5 class="code-feature-heading">Declare the pipeline as part of the scenario</h5>
+                  </div>
                   <div class="code-card grey-text text-darken-3">
                     <pre><code class="yml">
+  # Name of the scenario workflow
   name : data ingestion test
   project : user-analytics
 
-  tags :
-    - https
-    - mongo
-    - test
+    tags :
+     - https
+     - mongo
+     - test
 
-# params for the pipelines
-params :
-  mongo.host.name : xx.xx.xxx.xxx
-  reporter.html.outputPath : /path/to/report.html
+  # params for the pipelines
+  params :
+    mongo.host.name : xx.xx.xxx.xxx
+    reporter.html.outputPath : /path/to/report.html
 
-pipelines :
-  - name : Mongo-prep
-    className : com.jetprobe.sample.MongoSuite
-    description : Mongo db preparation
-    exitOnFailure : true
+  pipelines :
+    - name : Mongo-prep
+      className : com.jetprobe.sample.MongoSuite
+      description : Mongo db preparation
+      exitOnFailure : true
 
                         </code></pre>
 
@@ -150,17 +139,16 @@ pipelines :
                     </div>
                 </div>
 
-
-                <div class="cd-text">
-                  <h5 class="code-feature-heading">Execute and view the results</h5>
-                  <div class="feature-text">
-                    Once the pipeline has been defined, execute the validation using jetprobe CLI to view the validation report.
-                  </div>
-                </div>
-
                 <div class="card white ">
+                  <div class="cd-text card-action">
+                    <h5 class="code-feature-heading">Package and execute the workflow</h5>
+                  </div>
+
                   <div class="code-card grey-text text-darken-3">
                     <pre><code class="bash">
+  //package the workflow
+  sbt package
+  //Run the workflow
   jetprobe --jar /path/to/test-pipe.jar --config /path/to/config.yml
                         </code></pre>
 
